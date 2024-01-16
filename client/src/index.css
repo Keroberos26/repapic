@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #186F65;
+  --secondary-color: #B5CB99;
+  --sub-color: #B2533E;
+  --main-color: #FCE09B
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-kanit {
+  font-family: 'Kanit', sans-serif;
+}
+
+.comments-swiper .swiper-slide {
+  filter: blur(2px);
+  transition: filter 0.3s;
+}
+
+
+.comments-swiper .swiper-slide.swiper-slide-active {
+  filter: none
+}
+
+@media screen and (min-width: 1024px) {
+
+  .comments-swiper .swiper-slide.swiper-slide-prev,
+  .comments-swiper .swiper-slide.swiper-slide-next {
+    filter: none
+  }
+}
+
+.product-image-slider .swiper-slide:not(.swiper-slide-thumb-active) {
+  opacity: 0.3;
+}
