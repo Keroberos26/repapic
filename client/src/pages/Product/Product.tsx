@@ -42,7 +42,6 @@ const Product: React.FC = () => {
                 </div>
                 <div className="flex-grow">
                   <ProductDetail product={data} />
-                  <div className="h-[1000px]"></div>
                 </div>
               </>
             )}

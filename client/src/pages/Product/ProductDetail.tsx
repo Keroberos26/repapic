@@ -5,6 +5,7 @@ import CustomRating from '../../components/CustomRating';
 import SetQuantity from './SetQuantity';
 import CustomButton from '../../components/CustomButton';
 import { FiHeart, FiShare2 } from 'react-icons/fi';
+import ReviewList from './ReviewList';
 
 interface ProductDetailProps {
   product: any;
@@ -54,7 +55,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
         </div>
       </div>
       <hr className="my-6" />
-      <div></div>
+      <ReviewList />
     </div>
   );
 };

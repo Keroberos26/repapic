@@ -1,9 +1,10 @@
+import { CircularProgress } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface CustomButtonProps {
   children: React.ReactNode;
-  color: 'primary' | 'secondary';
+  color: 'primary' | 'secondary' | 'select';
   outline?: boolean;
   to?: string;
   size?: 'small' | 'large';
@@ -11,9 +12,11 @@ interface CustomButtonProps {
   block?: boolean;
   rounded?: boolean;
   disabled?: boolean;
+  loading?: boolean;
+  justify?: 'center' | 'between' | 'start' | 'end';
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -26,6 +29,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   rounded,
   block,
   disabled,
+  loading,
+  justify = 'center',
   leftIcon,
   rightIcon,
   onClick,
@@ -55,7 +60,9 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   let customClass: string = className || '';
 
   // Size
-  customClass += ' inline-flex items-center justify-center transition-all border-2 font-medium select-none';
+  customClass += ' inline-flex items-center transition-all border-2 font-medium select-none gap-1';
+  customClass += ' justify-' + justify;
+
   if (size === 'small') {
     customClass += ' py-1 px-5 text-sm';
   } else if (size === 'large') {
@@ -81,22 +88,34 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     if (color === 'secondary') {
       customClass += ' border-secondary bg-secondary hover:bg-main hover:border-main';
     }
+    if (color === 'select') {
+      customClass += 'border-grey bg-grey text-black';
+    }
   }
 
   // Rounded
   customClass += rounded ? ' rounded-full' : '';
 
   //Disabled
-  customClass += disabled ? '  opacity-50 pointer-events-none' : '';
+  customClass += disabled || loading ? '  opacity-50 pointer-events-none cursor-not-allowed' : '';
 
   //Block
   customClass += block ? ' w-full' : '';
 
   return (
     <Comp className={customClass} {...props} disabled={disabled}>
-      {leftIcon && <span>{leftIcon}</span>}
-      <span>{children}</span>
-      {rightIcon && <span>{rightIcon}</span>}
+      {loading ? (
+        <CircularProgress
+          size={size === 'small' ? 20 : size === 'large' ? 28 : 24}
+          sx={{ color: `var(--${color}-color)` }}
+        />
+      ) : (
+        <>
+          {leftIcon && <span>{leftIcon}</span>}
+          <span>{children}</span>
+          {rightIcon && <span>{rightIcon}</span>}
+        </>
+      )}
     </Comp>
   );
 };

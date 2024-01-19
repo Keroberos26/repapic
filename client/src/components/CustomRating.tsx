@@ -18,7 +18,7 @@ interface CustomRatingProps {
   precision?: number;
   readOnly?: boolean;
   size?: 'small' | 'large';
-  onChange?: () => void;
+  onChange?: (event: any, value: any) => void;
 }
 
 const CustomRating: React.FC<CustomRatingProps> = ({ value, defaultValue, precision, readOnly, size, onChange }) => {

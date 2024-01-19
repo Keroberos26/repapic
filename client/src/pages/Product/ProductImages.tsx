@@ -16,8 +16,8 @@ const ProductImages: React.FC<ProductImagesProps> = ({ product }) => {
     'absolute z-10 -translate-y-1/2  top-1/2 py-4 px-2 text-xl transition-all bg-main opacity-80 group-hover:translate-x-0 disabled:opacity-20';
 
   const slides = product.images.map((img: string, index: number) => (
-    <SwiperSlide>
-      <Image src={img} alt={product.title + index} key={index} className="w-full aspect-square" rounded={20} />
+    <SwiperSlide key={index}>
+      <Image src={img} alt={product.title + index} className="w-full aspect-square" rounded={20} />
     </SwiperSlide>
   ));
 
