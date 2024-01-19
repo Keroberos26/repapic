@@ -4,6 +4,7 @@ import { Chip, Skeleton, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { formatPrice } from '../utils';
 import CustomRating from './CustomRating';
+import config from '../config';
 
 interface ProductCardProps {
   product?: any;
@@ -35,12 +36,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         onTouchStart={() => handleImage(true)}
         onTouchEnd={() => handleImage(false)}
       >
-        <Link to={`/product/${product.id}`}>
+        <Link to={`${config.routes.collections}/${product.id}`}>
           <Image src={image} alt={product.title} className="w-full aspect-square" rounded={20} />
         </Link>
       </div>
       <div className="font-semibold">
-        <Link to={`/product/${product.id}`}>{product.title}</Link>
+        <Link to={`${config.routes.collections}/${product.id}`}>{product.title}</Link>
       </div>
       <div className="flex items-center gap-2">
         <CustomRating value={product.rating} precision={0.25} readOnly />

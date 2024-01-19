@@ -1,11 +1,11 @@
 const routes = {
   home: '/',
-  collections: '/collections',
-  product: '/product/:productId',
-  cart: '/cart',
-  signIn: '/sign-in',
-  signUp: '/sign-up',
-  signOut: '/sign-out',
+  collections: '/san-pham',
+  product: '/san-pham/:slug',
+  cart: '/gio-hang',
+  signIn: '/dang-nhap',
+  signUp: '/dang-ky',
+  signOut: '/dang-xuat',
   notFound: '*',
 };
 

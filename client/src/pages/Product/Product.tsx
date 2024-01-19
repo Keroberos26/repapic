@@ -9,8 +9,8 @@ import { FaAngleRight } from 'react-icons/fa6';
 import ProductImages from './ProductImages';
 
 const Product: React.FC = () => {
-  const { productId } = useParams();
-  const { data, loading } = useFetch(`/products/${productId}`);
+  const { slug } = useParams();
+  const { data, loading } = useFetch(`/products/${slug}`);
 
   useEffect(() => {
     document.title = `Repapic | ${data?.title}`;

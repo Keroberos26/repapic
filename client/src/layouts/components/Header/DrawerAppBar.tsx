@@ -29,27 +29,6 @@ const DrawerAppBar: React.FC = () => {
     setDrawerIsOpen(open);
   };
 
-  const DrawerContent: React.FC = () => (
-    <Box sx={{ width: 300 }} role="presentation">
-      <header className="text-white bg-primary p-[1.5em] rounded-br-[80px]">
-        <div className="text-3xl font-bold font-kanit">SHOP.CO</div>
-      </header>
-      <div className="p-2">
-        <Search />
-      </div>
-      <Divider />
-      <List>
-        {NAV_ITEMS.map((item, index) => (
-          <ListItem key={index} disablePadding onClick={toggleDrawer(false)}>
-            <ListItemButton onClick={() => navigator(item.to)}>
-              <ListItemText primary={item.title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
     <div className="py-5 text-black bg-white">
       <div className="px-3 sm:container sm:mx-auto">
@@ -60,7 +39,24 @@ const DrawerAppBar: React.FC = () => {
                 <RiMenu2Line />
               </IconButton>
               <Drawer anchor="left" open={drawerIsOpen} onClose={toggleDrawer(false)}>
-                <DrawerContent />
+                <Box sx={{ width: 300 }} role="presentation">
+                  <header className="text-white bg-primary p-[1.5em] rounded-br-[80px]">
+                    <div className="text-3xl font-bold font-kanit">SHOP.CO</div>
+                  </header>
+                  <div className="p-2">
+                    <Search />
+                  </div>
+                  <Divider />
+                  <List>
+                    {NAV_ITEMS.map((item, index) => (
+                      <ListItem key={index} disablePadding onClick={toggleDrawer(false)}>
+                        <ListItemButton onClick={() => navigator(item.to)}>
+                          <ListItemText primary={item.title} />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Box>
               </Drawer>
             </div>
             <Link to={config.routes.home} className="text-2xl md:text-[32px] font-bold font-kanit text-primary">
