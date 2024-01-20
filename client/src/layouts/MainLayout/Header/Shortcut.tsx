@@ -1,9 +1,11 @@
 import React, { FC, useState } from 'react';
+import { styled } from '@mui/material/styles';
 import { CartIcon, CompareIcon, HeartIcon, UserIcon } from '../../../components/Icons';
+import { Badge, BadgeProps } from '@mui/material';
 
 interface ShortcutItemProps {
   icon: React.ReactNode;
-  title: React.ReactNode;
+  title?: React.ReactNode;
   subtitle: React.ReactNode;
   onClick?: (event: React.MouseEvent) => void;
 }
@@ -32,17 +34,29 @@ const ShortcutItem: FC<ShortcutItemProps> = ({ icon, title, subtitle }) => {
   );
 };
 
+const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    top: 4,
+    padding: '0 6px',
+    backgroundColor: '#fff',
+    color: '#000',
+  },
+}));
+
 const Shortcut: FC = () => {
   return (
-    <div className="flex items-center gap-[10px] md:gap-5 lg:gap-9">
+    <div className="flex items-center gap-[10px] md:gap-5 lg:gap-9 placeholder pr-3 lg:pr-0">
       <ShortcutItem icon={<CompareIcon />} title="So sánh" subtitle="Sản phẩm" />
       <ShortcutItem icon={<HeartIcon />} title="Yêu thích" subtitle="Wishlist" />
       <ShortcutItem icon={<UserIcon />} title="Đăng nhập" subtitle="Tài khoản" />
       <ShortcutItem
-        icon={<CartIcon />}
-        title={<span className="px-2 text-black bg-white rounded-full">0</span>}
+        icon={
+          <StyledBadge badgeContent={26} max={9}>
+            <CartIcon />
+          </StyledBadge>
+        }
         subtitle={'0K'}
-      />
+      />{' '}
     </div>
   );
 };
