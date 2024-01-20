@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 interface CustomButtonProps {
   children: React.ReactNode;
-  color: 'primary' | 'secondary' | 'select';
+  color: 'primary' | 'secondary' | 'main';
   outline?: boolean;
   to?: string;
   size?: 'small' | 'large';
@@ -80,16 +80,19 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     if (color === 'secondary') {
       customClass += ' border-secondary hover:bg-secondary text-secondary';
     }
+    if (color === 'main') {
+      customClass += ' border-main hover:bg-main text-main';
+    }
   } else {
-    customClass += ' text-white';
+    customClass += '';
     if (color === 'primary') {
-      customClass += ' border-primary bg-primary hover:bg-sub hover:border-sub';
+      customClass += ' border-primary bg-primary hover:bg-sub hover:border-sub text-white';
     }
     if (color === 'secondary') {
-      customClass += ' border-secondary bg-secondary hover:bg-main hover:border-main';
+      customClass += ' border-secondary bg-secondary hover:bg-main hover:border-main text-white';
     }
-    if (color === 'select') {
-      customClass += 'border-grey bg-grey text-black';
+    if (color === 'main') {
+      customClass += ' border-main bg-main hover:bg-secondary hover:border-secondary text-primary hover:text-white';
     }
   }
 

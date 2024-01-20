@@ -1,20 +1,40 @@
-import config from '../../src/config';
-import Store from '../pages/Store';
+import config from '../config';
+import AdminLayout from '../layouts/AdminLayout';
+import MainLayout from '../layouts/MainLayout/MainLayout';
+import Collections from '../pages/Collections';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
-import Product from '../pages/Product';
 
 type RouteType = {
   path: string;
-  component: React.ComponentType<any>;
-  layout?: React.ComponentType<any>;
+  element: React.ComponentType<any>;
+  components: { path: string; element: React.ComponentType<any> }[];
 };
 
 export const publicRoutes: RouteType[] = [
-  { path: config.routes.home, component: Home },
-  { path: config.routes.collections, component: Store },
-  { path: config.routes.product, component: Product },
-  { path: config.routes.notFound, component: NotFound },
+  {
+    path: config.layouts.main,
+    element: MainLayout,
+    components: [
+      {
+        path: config.routes.home,
+        element: Home,
+      },
+      {
+        path: config.routes.collections,
+        element: Collections,
+      },
+      {
+        path: config.routes.notFound,
+        element: NotFound,
+      },
+    ],
+  },
+  {
+    path: config.layouts.admin,
+    element: AdminLayout,
+    components: [],
+  },
 ];
 
-export const privateRoutes = [];
+export const privateRoutes: RouteType[] = [];
