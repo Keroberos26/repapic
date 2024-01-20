@@ -15,7 +15,7 @@ const ShortcutItem: FC<ShortcutItemProps> = ({ icon, title, subtitle }) => {
 
   return (
     <div
-      className="flex items-center gap-[6px] cursor-pointer"
+      className="flex items-center gap-[6px] cursor-pointer hover:text-gray-400 transition-colors"
       onMouseOver={() => setIsRotate(true)}
       onMouseLeave={() => setIsRotate(false)}
     >

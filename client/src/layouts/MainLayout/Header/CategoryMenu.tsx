@@ -21,7 +21,7 @@ const CategoryMenu: FC = () => {
           <FaAngleDown />
         </div>
       </div>
-      <div className="absolute top-1/2 -translate-y-1/2 right-0 bg-white w-[1px] h-6"></div>
+      <div className="absolute top-1/2 -translate-y-1/2 right-0 bg-white bg-opacity-20 w-[1px] h-6"></div>
     </Button>
   );
 };
