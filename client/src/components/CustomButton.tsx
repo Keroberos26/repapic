@@ -60,7 +60,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   let customClass: string = className || '';
 
   // Size
-  customClass += ' inline-flex items-center transition-all border-2 font-medium select-none gap-1';
+  customClass += ' inline-flex items-center transition-all duration-300 border-2 font-medium select-none gap-1';
   customClass += ' justify-' + justify;
 
   if (size === 'small') {

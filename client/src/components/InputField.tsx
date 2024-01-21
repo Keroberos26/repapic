@@ -27,7 +27,7 @@ const InputField: FC<InputFieldProps> = ({
         className={`w-full tracking-wide text-black outline-none `}
         onChange={onChange}
       />
-      <CustomButton color="main" className="absolute top-0 bottom-0 right-0 px-3 duration-300">
+      <CustomButton color="main" className="absolute top-0 bottom-0 right-0 px-3">
         {buttonTitle}
       </CustomButton>
     </div>

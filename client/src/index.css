@@ -7,10 +7,13 @@
   --secondary-color: #304D30;
   --main-color: #FCE09B;
   --sub-color: #D6CC99;
+  --text-color: #1B1C1C;
+  --fade-color: #666;
 }
 
 body {
   font-family: 'Noto Sans', sans-serif;
+  color: var(--text-color)
 }
 
 img {

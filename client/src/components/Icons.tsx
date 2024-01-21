@@ -171,3 +171,228 @@ export const CategoryIcon = () => {
     </svg>
   );
 };
+
+export const TruckIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      version="1.1"
+      id="Icons"
+      x="0px"
+      y="0px"
+      viewBox="0 0 32 32"
+      xmlSpace="preserve"
+      className="mdl-js"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+    >
+      <polyline
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        points="2,9 19,9 19,24 10,24 "
+      />
+      <circle
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        cx="24"
+        cy="24"
+        r="2"
+      />
+      <circle
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        cx="8"
+        cy="24"
+        r="2"
+      />
+      <polyline
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        points="19,24 19,13 25,13 29,18 29,24 26,24 "
+      />
+      <line
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        x1="4"
+        y1="13"
+        x2="13"
+        y2="13"
+      />
+      <line
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        x1="2"
+        y1="17"
+        x2="11"
+        y2="17"
+      />
+      <rect x="-288" y="-432" fill="none" width="536" height="680" />
+    </svg>
+  );
+};
+
+export const HeadphoneIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      version="1.1"
+      id="Icons"
+      x="0px"
+      y="0px"
+      viewBox="0 0 32 32"
+      xmlSpace="preserve"
+      className="mdl-js"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        d="M5,17.4v-3.5C5,7.9,9.9,3,16,3s11,4.9,11,10.9l0,3.5"
+      />
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        d="M27,15v3.4C27,24.3,22.1,29,16,29l0-2l3,0"
+      />
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        d="M9,22v-8c-2.2,0-4,1.8-4,4S6.8,22,9,22z"
+      />
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        d="M23,14v8c2.2,0,4-1.8,4-4S25.2,14,23,14z"
+      />
+    </svg>
+  );
+};
+
+export const GiftIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="i-gift"
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      className="mdl-js"
+      width="1em"
+      height="1em"
+    >
+      <path d="M4 14 L4 30 28 30 28 14 M2 9 L2 14 30 14 30 9 Z M16 9 C 16 9 14 0 8 3 2 6 16 9 16 9 16 9 18 0 24 3 30 6 16 9 16 9 M16 9 L16 30" />
+    </svg>
+  );
+};
+
+export const DiscountIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      fill="currentColor"
+      width="1em"
+      height="1em"
+      version="1.1"
+      id="Capa_1"
+      x="0px"
+      y="0px"
+      viewBox="0 0 209.281 209.281"
+      xmlSpace="preserve"
+      className="mdl-js"
+    >
+      <g>
+        <path d="M207.17,99.424l-20.683-21.377l4.168-29.455c0.567-4.006-2.145-7.739-6.131-8.438l-29.298-5.137L141.285,8.739   c-1.896-3.575-6.287-4.998-9.919-3.223L104.64,18.582L77.916,5.517c-3.636-1.777-8.023-0.351-9.92,3.223L54.055,35.018   l-29.298,5.137c-3.985,0.698-6.698,4.432-6.131,8.438l4.167,29.455L2.11,99.424c-2.813,2.907-2.813,7.522,0,10.43l20.682,21.378   l-4.167,29.456c-0.566,4.005,2.146,7.738,6.13,8.438l29.299,5.14l13.942,26.275c1.896,3.574,6.284,5,9.919,3.223l26.724-13.062   l26.727,13.062c1.059,0.518,2.181,0.763,3.288,0.763c2.691,0,5.286-1.454,6.63-3.986l13.942-26.275l29.299-5.14   c3.984-0.699,6.697-4.433,6.13-8.438l-4.168-29.456l20.684-21.378C209.984,106.946,209.984,102.332,207.17,99.424z    M173.158,123.438c-1.608,1.662-2.359,3.975-2.035,6.266l3.665,25.902l-25.764,4.52c-2.278,0.4-4.245,1.829-5.329,3.872   l-12.26,23.105l-23.502-11.486c-1.039-0.508-2.166-0.762-3.294-0.762c-1.127,0-2.254,0.254-3.293,0.762l-23.5,11.486l-12.26-23.105   c-1.084-2.043-3.051-3.472-5.329-3.872l-25.764-4.52l3.664-25.902c0.324-2.29-0.427-4.603-2.036-6.265l-18.186-18.799   l18.186-18.797c1.608-1.662,2.36-3.975,2.036-6.265l-3.664-25.901l25.763-4.517c2.279-0.399,4.246-1.829,5.331-3.872l12.259-23.108   l23.499,11.489c2.078,1.017,4.508,1.017,6.588,0l23.501-11.489l12.26,23.108c1.084,2.043,3.051,3.473,5.33,3.872l25.763,4.517   l-3.665,25.901c-0.324,2.291,0.427,4.603,2.036,6.266l18.186,18.796L173.158,123.438z" />
+        <path d="M80.819,98.979c10.014,0,18.16-8.146,18.16-18.158c0-10.016-8.146-18.164-18.16-18.164   c-10.015,0-18.162,8.148-18.162,18.164C62.657,90.834,70.805,98.979,80.819,98.979z M80.819,74.657c3.397,0,6.16,2.765,6.16,6.164   c0,3.396-2.764,6.158-6.16,6.158c-3.398,0-6.162-2.763-6.162-6.158C74.657,77.422,77.421,74.657,80.819,74.657z" />
+        <path d="M140.867,68.414c-2.342-2.343-6.143-2.344-8.484,0l-63.968,63.967c-2.343,2.343-2.343,6.142,0,8.485   c1.172,1.172,2.707,1.757,4.243,1.757c1.535,0,3.071-0.586,4.243-1.757l63.967-63.967C143.21,74.556,143.21,70.757,140.867,68.414z   " />
+        <path d="M128.46,110.301c-10.013,0-18.158,8.146-18.158,18.158c0,10.016,8.146,18.164,18.158,18.164   c10.016,0,18.164-8.148,18.164-18.164C146.624,118.447,138.476,110.301,128.46,110.301z M128.46,134.624   c-3.395,0-6.158-2.765-6.158-6.164c0-3.395,2.763-6.158,6.158-6.158c3.398,0,6.164,2.763,6.164,6.158   C134.624,131.858,131.859,134.624,128.46,134.624z" />
+      </g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+      <g></g>
+    </svg>
+  );
+};
+
+export const PaymentIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      className="mdl-js"
+      fill="currentColor"
+      width="1em"
+      height="1em"
+    >
+      <g id="_06" data-name="06">
+        <rect fill="currentColor" x="3" y="11" width="26" height="4" />
+        <path
+          fill="currentColor"
+          d="M29,26H3a1,1,0,0,1-1-1V7A1,1,0,0,1,3,6H29a1,1,0,0,1,1,1V25A1,1,0,0,1,29,26ZM4,24H28V8H4Z"
+        />
+        <circle fill="currentColor" cx="21" cy="21" r="1.5" />
+        <circle fill="currentColor" cx="25" cy="21" r="1.5" />
+      </g>
+    </svg>
+  );
+};
