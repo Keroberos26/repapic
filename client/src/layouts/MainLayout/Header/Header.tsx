@@ -14,7 +14,7 @@ const Header: FC = () => {
       <div className="py-5 text-white bg-primary">
         <Container>
           <div className="flex items-center justify-between gap-20">
-            <div className="flex items-center text-2xl tracking-tight">
+            <div className="flex items-center text-2xl font-semibold tracking-tight">
               <DrawerApp />
               <Link to={config.routes.home}>Repapic.</Link>
             </div>
