@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import { DiscountIcon, GiftIcon, HeadphoneIcon, PaymentIcon, TruckIcon } from '../../components/Icons';
-import 'swiper/css';
 
 interface ShortcutItemProps {
   icon: React.ReactNode;
@@ -15,7 +14,7 @@ const ShortcutItem: FC<ShortcutItemProps> = ({ icon, title, subtitle }) => {
 
   return (
     <div
-      className="flex items-center gap-[6px] cursor-pointer select-none"
+      className="flex items-center gap-[6px] select-none justify-center sm:justify-start"
       onMouseOver={() => setIsRotate(true)}
       onMouseLeave={() => setIsRotate(false)}
     >

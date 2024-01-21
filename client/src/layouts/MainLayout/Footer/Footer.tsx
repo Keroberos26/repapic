@@ -19,7 +19,7 @@ const Footer: FC = () => {
           <div className="grid grid-cols-2 lg:grid-cols-11 gap-7">
             <div className="lg:col-span-2">
               <FooterList heading="Repapic">
-                <address>Khu đô thị FPT City, Ngũ Hành Sơn, Đà Nẵng 550000, Việt Nam</address>
+                <address className="text-[13px]">Khu đô thị FPT City, Ngũ Hành Sơn, Đà Nẵng 550000, Việt Nam</address>
                 <FooterLink to="tel:+84775428404">(+00) 123-456-789</FooterLink>
                 <FooterLink to="mailto:jinnguyen054@gmail.com">repapic@hotmail.com</FooterLink>
                 <div className="flex items-center gap-2">

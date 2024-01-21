@@ -19,6 +19,9 @@ module.exports = {
         text: 'var(--text-color)',
         fade: 'var(--fade-color)',
       },
+      aspectRatio: {
+        banner: '83 / 55',
+      },
     },
   },
   plugins: [],
