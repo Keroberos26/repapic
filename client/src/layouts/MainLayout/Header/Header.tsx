@@ -11,7 +11,7 @@ import DrawerApp from './DrawerApp';
 const Header: FC = () => {
   return (
     <header>
-      <div className="py-5 text-white bg-primary">
+      <div className="fixed top-0 left-0 right-0 z-50 py-5 text-white bg-primary">
         <Container>
           <div className="flex items-center justify-between gap-20">
             <div className="flex items-center text-2xl font-semibold tracking-tight">
@@ -27,7 +27,7 @@ const Header: FC = () => {
           </div>
         </Container>
       </div>
-      <div className="text-white bg-secondary">
+      <div className="text-white bg-secondary mt-[77.5px] md:mt-[85px] lg:mt-[100px]">
         <Container>
           <div className="hidden lg:flex">
             <CategoryMenu />

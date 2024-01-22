@@ -96,6 +96,7 @@ const Footer: FC = () => {
                     <img
                       src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1600041600"
                       alt="Download on the App Store"
+                      className="w-full"
                     />
                   </a>
                 </div>
