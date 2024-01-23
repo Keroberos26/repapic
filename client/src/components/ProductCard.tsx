@@ -3,21 +3,54 @@ import Image from './Image';
 import { Link } from 'react-router-dom';
 import CustomRating from './CustomRating';
 import { formatPrice } from '../utils';
-import { Tooltip } from '@mui/material';
+import { Skeleton, Tooltip } from '@mui/material';
 import { HeartIcon } from './Icons';
 import { BsHandbag } from 'react-icons/bs';
 import { LiaRandomSolid } from 'react-icons/lia';
 import { IoEyeOutline } from 'react-icons/io5';
 
+export type ProductType = {
+  id: string;
+  title: string;
+  description: string;
+  images: string[];
+  rating: number;
+  price: number;
+  discountPercentage: number;
+  stock: number;
+  slug: string;
+};
+
 interface ProductCardProps {
-  data?: any;
+  data: ProductType;
 }
 
-const buttonStyle =
-  'size-[30px] bg-white bg-opacity-70 hover:bg-main hover:bg-opacity-100 transition-all duration-300 inline-flex justify-center items-center rounded-full';
+export const ProductCardSkeleton: FC = () => {
+  return (
+    <div className="bg-white rounded-[10px] shadow-2xl overflow-hidden">
+      <div className="relative pb-[100%]">
+        <Skeleton
+          variant="rounded"
+          animation="wave"
+          sx={{ position: 'absolute', height: '100%' }}
+          className="absolute top-0 bottom-0 left-0 right-0"
+        />
+      </div>
+      <div className="p-[10px] lg:p-5 flex flex-col gap-2">
+        <Skeleton animation="wave" variant="rounded" width={'50%'} />
+        <Skeleton animation="wave" variant="rounded" />
+        <Skeleton animation="wave" variant="rounded" width={'30%'} />
+        <Skeleton animation="wave" variant="rounded" width={'30%'} />
+      </div>
+    </div>
+  );
+};
 
 const ProductCard: FC<ProductCardProps> = ({ data }) => {
   const [isHover, setIsHover] = useState<boolean>(false);
+
+  const buttonStyle =
+    'size-[30px] bg-white bg-opacity-70 hover:bg-main hover:bg-opacity-100 transition-all duration-300 inline-flex justify-center items-center rounded-full';
 
   return (
     <div
@@ -25,17 +58,17 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
       onMouseOver={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <Link to={'/'} className="relative pb-[100%] block">
+      <Link to={`${data.slug}`} className="relative pb-[100%] block">
         <Image
-          src="/assets/img/main-banner.jpg"
-          alt="Test"
+          src={data.images[0]}
+          alt={data.title}
           className={`absolute top-0 left-0 right-0 aspect-square duration-700 transition-all ${
             isHover ? 'opacity-0' : 'opacity-100'
           }`}
         />
         <Image
-          src="/assets/img/main-banner-1.jpg"
-          alt="Test"
+          src={data.images[1]}
+          alt={data.title}
           className={`absolute top-0 left-0 right-0 aspect-square duration-700 transition-all ${
             isHover ? 'opacity-100' : 'opacity-0'
           }`}
@@ -77,15 +110,17 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
       <div className="p-[10px] lg:p-5">
         <h4 className="line-clamp-2 mb-[5px] md:mb-[10px] tracking-tight font-semibold text-xs md:text-[13px] lg:text-[15px]">
           <Link to={'/'} className="inline">
-            Tên sản phẩm
+            {data.title}
           </Link>
         </h4>
         <div className="mb-1 lg:mb-2">
-          <CustomRating size="small" value={4.3} precision={0.25} readOnly />
+          <CustomRating size="small" value={data.rating} precision={0.25} readOnly />
         </div>
         <div className="font-medium tracking-tight lg:text-lg">
-          <span className="mr-2 text-red-600">{formatPrice(150)}</span>
-          <del className="text-[0.8em] text-[#999]">{formatPrice(200)}</del>
+          <span className="mr-2 text-red-600">
+            {formatPrice(data.price - (data.price * data.discountPercentage) / 100)}
+          </span>
+          <del className="text-[0.8em] text-[#999]">{formatPrice(data.price)}</del>
         </div>
       </div>
     </div>

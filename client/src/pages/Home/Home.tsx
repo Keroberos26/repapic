@@ -2,6 +2,8 @@ import { FC } from 'react';
 import Service from './Service';
 import Container from '../../components/Container';
 import Banner from './Banner';
+import ProductList from '../../components/ProductList';
+import Heading from './Heading';
 
 const Home: FC = () => {
   return (
@@ -14,6 +16,8 @@ const Home: FC = () => {
       <div>
         <Container>
           <Service />
+          <Heading title="Bán chạy nhất" prevNav="btn-prev" nextNav="btn-next" />
+          <ProductList url="/products?skip=35" limit={10} prevNav="btn-prev" nextNav="btn-next" />
         </Container>
       </div>
     </>
