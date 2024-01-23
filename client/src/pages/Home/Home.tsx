@@ -16,8 +16,14 @@ const Home: FC = () => {
       <div>
         <Container>
           <Service />
-          <Heading title="Bán chạy nhất" prevNav="btn-prev" nextNav="btn-next" />
-          <ProductList url="/products?skip=35" limit={10} prevNav="btn-prev" nextNav="btn-next" />
+          <section className="mb-[25px] md:mb-[35px] lg:mb-[65px]">
+            <Heading title="Sản phẩm mới" prevNav="btn-new-prev" nextNav="btn-new-next" />
+            <ProductList url="/products?skip=35" limit={10} prevNav="btn-new-prev" nextNav="btn-new-next" />
+          </section>
+          <section className="mb-[25px] md:mb-[35px] lg:mb-[65px]">
+            <Heading title="Bán chạy nhất" prevNav="btn-best-prev" nextNav="btn-best-next" />
+            <ProductList url="/products?skip=45" limit={10} prevNav="btn-best-prev" nextNav="btn-best-next" />
+          </section>
         </Container>
       </div>
     </>

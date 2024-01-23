@@ -27,7 +27,7 @@ interface ProductCardProps {
 
 export const ProductCardSkeleton: FC = () => {
   return (
-    <div className="bg-white rounded-[10px] shadow-2xl overflow-hidden">
+    <div className="bg-white rounded-[10px] overflow-hidden">
       <div className="relative pb-[100%]">
         <Skeleton
           variant="rounded"
@@ -54,7 +54,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
 
   return (
     <div
-      className="relative bg-white rounded-[10px] shadow-2xl overflow-hidden"
+      className="relative bg-white rounded-[10px] shadow-base overflow-hidden"
       onMouseOver={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
@@ -73,6 +73,15 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
             isHover ? 'opacity-100' : 'opacity-0'
           }`}
         />
+        {data.stock <= 0 && (
+          <div
+            className={`absolute z-[2] flex items-center justify-center px-2 py-6 italic text-center text-white transition-all duration-500 -translate-x-1/2 -translate-y-1/2 bg-black rounded-full bg-opacity-80 size-20 left-1/2 top-1/2 ${
+              isHover && 'opacity-0'
+            }`}
+          >
+            Hết hàng
+          </div>
+        )}
       </Link>
       <div className="absolute z-[1] flex flex-col gap-1 top-2 right-2">
         <Tooltip title="Yêu thích" placement="right-end">
@@ -100,15 +109,17 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
           </button>
         </Tooltip>
       </div>
-      <div
-        className={`absolute top-2 left-2 z-[1] font-semibold rounded-full bg-main text-xs py-1 px-2 transition-transform duration-500 ${
-          isHover && 'lg:-translate-y-10'
-        }`}
-      >
-        50%
-      </div>
+      {data.discountPercentage > 0 && (
+        <div
+          className={`absolute top-2 left-2 z-[1] font-semibold rounded-full bg-main text-xs py-1 px-2 transition-transform duration-500 ${
+            isHover && 'lg:-translate-y-10'
+          }`}
+        >
+          {Math.round(data.discountPercentage)}%
+        </div>
+      )}
       <div className="p-[10px] lg:p-5">
-        <h4 className="line-clamp-2 mb-[5px] md:mb-[10px] tracking-tight font-semibold text-xs md:text-[13px] lg:text-[15px]">
+        <h4 className="line-clamp-2 mb-[5px] md:mb-[10px] tracking-tight font-semibold text-xs md:text-[13px] lg:text-[15px] leading-4 md:leading-5 lg:leading-[22px] h-8 md:h-10 lg:h-11">
           <Link to={'/'} className="inline">
             {data.title}
           </Link>
@@ -120,7 +131,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
           <span className="mr-2 text-red-600">
             {formatPrice(data.price - (data.price * data.discountPercentage) / 100)}
           </span>
-          <del className="text-[0.8em] text-[#999]">{formatPrice(data.price)}</del>
+          {data.discountPercentage > 0 && <del className="text-[0.8em] text-[#999]">{formatPrice(data.price)}</del>}
         </div>
       </div>
     </div>

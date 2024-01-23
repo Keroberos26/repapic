@@ -22,6 +22,9 @@ module.exports = {
       aspectRatio: {
         banner: '83 / 55',
       },
+      boxShadow: {
+        base: '0 0 8px rgb(0 0 0 / 8%);',
+      },
     },
   },
   plugins: [],
