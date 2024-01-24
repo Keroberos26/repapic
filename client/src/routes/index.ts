@@ -4,6 +4,7 @@ import MainLayout from '../layouts/MainLayout/MainLayout';
 import Collections from '../pages/Collections';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
+import Product from '../pages/Product';
 
 type RouteType = {
   path: string;
@@ -23,6 +24,10 @@ export const publicRoutes: RouteType[] = [
       {
         path: config.routes.collections,
         element: Collections,
+      },
+      {
+        path: config.routes.product,
+        element: Product,
       },
       {
         path: config.routes.notFound,

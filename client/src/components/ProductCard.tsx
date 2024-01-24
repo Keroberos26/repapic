@@ -8,18 +8,8 @@ import { HeartIcon } from './Icons';
 import { BsHandbag } from 'react-icons/bs';
 import { LiaRandomSolid } from 'react-icons/lia';
 import { IoEyeOutline } from 'react-icons/io5';
-
-export type ProductType = {
-  id: string;
-  title: string;
-  description: string;
-  images: string[];
-  rating: number;
-  price: number;
-  discountPercentage: number;
-  stock: number;
-  slug: string;
-};
+import config from '../config';
+import { ProductType } from '../types';
 
 interface ProductCardProps {
   data: ProductType;
@@ -58,7 +48,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
       onMouseOver={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <Link to={`${data.slug}`} className="relative pb-[100%] block">
+      <Link to={`${config.routes.collections}/test/${data.id}`} className="relative pb-[100%] block">
         <Image
           src={data.images[0]}
           alt={data.title}
@@ -120,7 +110,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
       )}
       <div className="p-[10px] lg:p-5">
         <h4 className="line-clamp-2 mb-[5px] md:mb-[10px] tracking-tight font-semibold text-xs md:text-[13px] lg:text-[15px] leading-4 md:leading-5 lg:leading-[22px] h-8 md:h-10 lg:h-11">
-          <Link to={'/'} className="inline">
+          <Link to={`${config.routes.collections}/test/${data.id}`} className="inline">
             {data.title}
           </Link>
         </h4>

@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ProductCard, { ProductCardSkeleton, ProductType } from './ProductCard';
+import ProductCard, { ProductCardSkeleton } from './ProductCard';
 import { useFetch } from '../hooks';
 import { Navigation } from 'swiper/modules';
+import { ProductType } from '../types';
 
 interface ProductListProps {
   url: string;

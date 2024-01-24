@@ -18,7 +18,7 @@ const Footer: FC = () => {
         <Container>
           <div className="grid grid-cols-2 lg:grid-cols-11 gap-7">
             <div className="lg:col-span-2">
-              <FooterList heading="Repapic">
+              <FooterList heading="REPAPIC.">
                 <address className="text-[13px]">Khu đô thị FPT City, Ngũ Hành Sơn, Đà Nẵng 550000, Việt Nam</address>
                 <FooterLink to="tel:+84775428404">(+00) 123-456-789</FooterLink>
                 <FooterLink to="mailto:jinnguyen054@gmail.com">repapic@hotmail.com</FooterLink>
@@ -59,7 +59,7 @@ const Footer: FC = () => {
               </FooterList>
             </div>
             <div className="lg:col-span-2">
-              <FooterList heading="CHÍNH SÁCH">
+              <FooterList heading="Chính sách">
                 <FooterLink to="#">Chính sách đổi trả 60 ngày</FooterLink>
                 <FooterLink to="#">Chính sách khuyến mãi</FooterLink>
                 <FooterLink to="#">Chính sách bảo mật</FooterLink>
@@ -67,7 +67,7 @@ const Footer: FC = () => {
               </FooterList>
             </div>
             <div className="lg:col-span-2">
-              <FooterList heading="TÀI NGUYÊN">
+              <FooterList heading="Tài nguyên">
                 <FooterLink to="#">Đóng góp giấy</FooterLink>
                 <FooterLink to="#">Workshop</FooterLink>
                 <FooterLink to="#">Voucher</FooterLink>
@@ -108,7 +108,7 @@ const Footer: FC = () => {
       <div>
         <Container>
           <div className="py-5 text-sm text-center">
-            Copyright by Repapic. &copy; {new Date().getFullYear()}. All rights reserved.
+            Copyright by REPAPIC. &copy; {new Date().getFullYear()}. All rights reserved.
           </div>
         </Container>
       </div>

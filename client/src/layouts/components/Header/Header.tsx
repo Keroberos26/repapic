@@ -16,7 +16,7 @@ const Header: FC = () => {
           <div className="flex items-center justify-between gap-20">
             <div className="flex items-center text-2xl font-semibold tracking-tight">
               <DrawerApp />
-              <Link to={config.routes.home}>Repapic.</Link>
+              <Link to={config.routes.home}>REPAPIC.</Link>
             </div>
             <div className="flex-grow hidden lg:block">
               <Search />
