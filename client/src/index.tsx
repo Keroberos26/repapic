@@ -8,12 +8,15 @@ import 'swiper/css/pagination';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import MuiThemeProvider from './context/MuiThemeProvider';
+import AuthProvider from './context/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <MuiThemeProvider>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </MuiThemeProvider>
   </React.StrictMode>,
 );

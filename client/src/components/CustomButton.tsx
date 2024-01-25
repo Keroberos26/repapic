@@ -100,7 +100,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   customClass += rounded ? ' rounded-full' : '';
 
   //Disabled
-  customClass += disabled || loading ? '  opacity-50 pointer-events-none cursor-not-allowed' : '';
+  customClass += disabled ? '  opacity-50 pointer-events-none cursor-not-allowed' : '';
 
   //Block
   customClass += block ? ' w-full' : '';
@@ -110,7 +110,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       {loading ? (
         <CircularProgress
           size={size === 'small' ? 20 : size === 'large' ? 28 : 24}
-          sx={{ color: `var(--${color}-color)` }}
+          color="inherit"
+          className={outline ? `text-${color}` : 'text-main'}
         />
       ) : (
         <>

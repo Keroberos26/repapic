@@ -5,6 +5,7 @@ import Collections from '../pages/Collections';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import Product from '../pages/Product';
+import SignIn from '../pages/SignIn';
 
 type RouteType = {
   path: string;
@@ -28,6 +29,10 @@ export const publicRoutes: RouteType[] = [
       {
         path: config.routes.product,
         element: Product,
+      },
+      {
+        path: config.routes.signIn,
+        element: SignIn,
       },
       {
         path: config.routes.notFound,

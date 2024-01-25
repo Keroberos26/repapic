@@ -6,9 +6,8 @@ const routes = {
   category: layouts.main + 'san-pham/:cateSlug',
   product: layouts.main + 'san-pham/:cateSlug/:productSlug',
   cart: layouts.main + 'gio-hang',
-  signIn: layouts.main + 'dang-nhap',
-  signUp: layouts.main + 'dang-ky',
-  signOut: layouts.main + 'dang-xuat',
+  signIn: layouts.main + 'tai-khoan/dang-nhap',
+  signUp: layouts.main + 'tai-khoan/dang-ky',
   notFound: layouts.main + '*',
 };
 
