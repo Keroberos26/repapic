@@ -1,18 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, model, plugin } from 'mongoose';
+import slug from 'mongoose-slug-updater';
 
-const Item = new mongoose.Schema({
-  product: {
-    type: Schema.Types.ObjectId,
-    ref: 'Product',
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    required: true,
-  },
-});
-
-const Order = new mongoose.Schema(
+const Order = new Schema(
   {
     id: {
       type: ObjectId,
@@ -32,9 +21,52 @@ const Order = new mongoose.Schema(
       ref: 'Status',
       required: true,
     },
-    items: [Item],
+    items: [
+      {
+        product: {
+          title: {
+            type: String,
+            required: true,
+          },
+          slug: {
+            type: String,
+            slug: 'title',
+            unique: true,
+          },
+          images: {
+            type: [String],
+            required: true,
+          },
+          category: {
+            type: Schema.Types.ObjectId,
+            ref: 'Category',
+            required: true,
+          },
+          discount: {
+            type: Number,
+          },
+          type: {
+            size: {
+              type: String,
+              required: true,
+            },
+            price: {
+              type: Number,
+              required: true,
+            },
+          },
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+      },
+    ],
   },
   { timestamps: true },
 );
 
-export default mongoose.model('Order', Order);
+//Add plugin
+plugin(slug);
+
+export default model('Order', Order);

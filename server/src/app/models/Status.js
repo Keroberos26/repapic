@@ -1,11 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 
-const Status = new mongoose.Schema(
+const Status = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-    },
     title: {
       type: String,
       required: true,
@@ -14,4 +10,4 @@ const Status = new mongoose.Schema(
   { timestamps: true },
 );
 
-export default mongoose.model('Status', Status);
+export default model('Status', Status);

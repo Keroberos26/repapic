@@ -1,34 +1,17 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, model, plugin } from 'mongoose';
 import slug from 'mongoose-slug-updater';
 
-const type = new mongoose.Schema({
-  size: {
-    type: String,
-    required: true,
-  },
-  stock: {
-    type: Number,
-    required: true,
-  },
-});
-
-const Product = new mongoose.Schema(
+const Product = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-    },
     title: {
       type: String,
       required: true,
     },
     material: {
       type: String,
-      required: true,
     },
     source: {
       type: String,
-      required: true,
     },
     slug: {
       type: String,
@@ -39,7 +22,22 @@ const Product = new mongoose.Schema(
       type: [String],
       required: true,
     },
-    types: [type],
+    types: [
+      {
+        size: {
+          type: String,
+          required: true,
+        },
+        stock: {
+          type: Number,
+          default: 0,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
+      },
+    ],
     category: {
       type: Schema.Types.ObjectId,
       ref: 'Category',
@@ -47,7 +45,6 @@ const Product = new mongoose.Schema(
     },
     discount: {
       type: Number,
-      required: true,
     },
     reviews: [
       {
@@ -61,6 +58,6 @@ const Product = new mongoose.Schema(
 );
 
 //Add plugin
-mongoose.plugin(slug);
+plugin(slug);
 
-export default mongoose.model('Product', Product);
+export default model('Product', Product);

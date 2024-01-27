@@ -1,11 +1,8 @@
-import mongoose from 'mongoose';
+import { Schema, model, plugin } from 'mongoose';
+import slug from 'mongoose-slug-updater';
 
-const Blog = new mongoose.Schema(
+const Blog = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-    },
     title: {
       type: String,
       required: true,
@@ -18,18 +15,28 @@ const Blog = new mongoose.Schema(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+      slug: 'title',
+      unique: true,
+    },
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
-    comments: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+      },
+    ],
   },
   { timestamps: true },
 );
 
-export default mongoose.model('Blog', Blog);
+//Add plugin
+plugin(slug);
+
+export default model('Blog', Blog);

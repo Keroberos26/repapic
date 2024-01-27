@@ -1,12 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 import slug from 'mongoose-slug-updater';
 
-const Category = new mongoose.Schema(
+const Category = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-    },
     name: {
       type: String,
       required: true,
@@ -25,6 +21,6 @@ const Category = new mongoose.Schema(
 );
 
 //Add plugin
-mongoose.plugin(slug);
+plugin(slug);
 
-export default mongoose.model('Category', Category);
+export default model('Category', Category);
