@@ -19,10 +19,10 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCredentials((prev) => ({ ...prev, [event.target.id]: event.target.value }));
+    setCredentials((prev) => ({ ...prev, [event.target.name]: event.target.value }));
 
-    if ((event.target.id === 'password' || event.target.id === 'username') && errorCredentials[event.target.id]) {
-      setErrorCredentials((prev) => ({ ...prev, [event.target.id]: '' }));
+    if ((event.target.name === 'password' || event.target.name === 'username') && errorCredentials[event.target.name]) {
+      setErrorCredentials((prev) => ({ ...prev, [event.target.name]: '' }));
     }
   };
 
@@ -75,7 +75,7 @@ const SignIn = () => {
                 fullWidth
                 size="small"
                 color="secondary"
-                id="username"
+                name="username"
                 value={credentials.username}
                 onChange={handleChange}
               />
@@ -88,7 +88,7 @@ const SignIn = () => {
                 fullWidth
                 size="small"
                 color="secondary"
-                id="password"
+                name="password"
                 value={credentials.password}
                 onChange={handleChange}
                 InputProps={{
