@@ -1,6 +1,6 @@
-import mongoose, { Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const User = new mongoose.Schema(
+const User = new Schema(
   {
     name: {
       type: String,
@@ -12,6 +12,7 @@ const User = new mongoose.Schema(
     },
     email: {
       type: String,
+      lowercase: true,
       required: true,
     },
     isAdmin: {

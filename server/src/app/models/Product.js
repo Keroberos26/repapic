@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, plugin } from 'mongoose';
+import { Schema, model, plugin } from 'mongoose';
 import slug from 'mongoose-slug-updater';
 
 const Product = new Schema(
@@ -24,18 +24,9 @@ const Product = new Schema(
     },
     types: [
       {
-        size: {
-          type: String,
-          required: true,
-        },
-        stock: {
-          type: Number,
-          default: 0,
-        },
-        price: {
-          type: Number,
-          required: true,
-        },
+        type: Schema.Types.ObjectId,
+        ref: 'Type',
+        required: true,
       },
     ],
     category: {

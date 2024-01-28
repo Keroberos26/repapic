@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import slug from 'mongoose-slug-updater';
 
 const Category = new Schema(

@@ -1,12 +1,7 @@
-import mongoose, { Schema, model, plugin } from 'mongoose';
-import slug from 'mongoose-slug-updater';
+import { Schema, model } from 'mongoose';
 
 const Order = new Schema(
   {
-    id: {
-      type: ObjectId,
-      required: true,
-    },
     name: {
       type: String,
     },
@@ -17,9 +12,9 @@ const Order = new Schema(
       type: String,
     },
     status: {
-      type: Schema.Types.ObjectId,
-      ref: 'Status',
-      required: true,
+      type: String,
+      enum: ['pending', 'delivering', 'completed', 'canceled', 'closed'],
+      default: 'pending',
     },
     items: [
       {
@@ -30,8 +25,7 @@ const Order = new Schema(
           },
           slug: {
             type: String,
-            slug: 'title',
-            unique: true,
+            required: true,
           },
           images: {
             type: [String],
@@ -65,8 +59,5 @@ const Order = new Schema(
   },
   { timestamps: true },
 );
-
-//Add plugin
-plugin(slug);
 
 export default model('Order', Order);
