@@ -13,11 +13,6 @@ const Cart = new Schema({
         ref: 'Product',
         required: true,
       },
-      type: {
-        type: Schema.Types.ObjectId,
-        ref: 'Type',
-        required: true,
-      },
       quantity: {
         type: Number,
         required: true,

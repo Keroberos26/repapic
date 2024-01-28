@@ -11,6 +11,10 @@ const Order = new Schema(
     phone: {
       type: String,
     },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
     status: {
       type: String,
       enum: ['pending', 'delivering', 'completed', 'canceled', 'closed'],
@@ -39,15 +43,9 @@ const Order = new Schema(
           discount: {
             type: Number,
           },
-          type: {
-            size: {
-              type: String,
-              required: true,
-            },
-            price: {
-              type: Number,
-              required: true,
-            },
+          price: {
+            type: Number,
+            required: true,
           },
         },
         quantity: {

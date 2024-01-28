@@ -22,13 +22,15 @@ const Product = new Schema(
       type: [String],
       required: true,
     },
-    types: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Type',
-        required: true,
-      },
-    ],
+    price: {
+      type: String,
+      min: 1000,
+      required: true,
+    },
+    stock: {
+      type: String,
+      default: 0,
+    },
     category: {
       type: Schema.Types.ObjectId,
       ref: 'Category',
@@ -36,6 +38,8 @@ const Product = new Schema(
     },
     discount: {
       type: Number,
+      min: 0,
+      max: 100,
     },
     reviews: [
       {
