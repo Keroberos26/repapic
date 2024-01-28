@@ -1,46 +1,34 @@
 import { Schema, model, plugin } from 'mongoose';
 import slug from 'mongoose-slug-updater';
 
-const Product = new Schema(
+const Blog = new Schema(
   {
     title: {
       type: String,
       required: true,
     },
-    material: {
+    text: {
       type: String,
+      required: true,
     },
-    source: {
+    image: {
       type: String,
+      required: true,
     },
     slug: {
       type: String,
       slug: 'title',
       unique: true,
     },
-    images: {
-      type: [String],
-      required: true,
-    },
-    types: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Type',
-        required: true,
-      },
-    ],
-    category: {
+    user: {
       type: Schema.Types.ObjectId,
-      ref: 'Category',
+      ref: 'User',
       required: true,
     },
-    discount: {
-      type: Number,
-    },
-    reviews: [
+    comments: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Review',
+        ref: 'User',
         required: true,
       },
     ],
@@ -51,4 +39,4 @@ const Product = new Schema(
 //Add plugin
 plugin(slug);
 
-export default model('Product', Product);
+export default model('Blog', Blog);
