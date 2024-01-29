@@ -19,6 +19,9 @@ const Review = new Schema(
     comment: {
       type: String,
     },
+    reply: {
+      type: String,
+    },
   },
   { timestamps: true },
 );
