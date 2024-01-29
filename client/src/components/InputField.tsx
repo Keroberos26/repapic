@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import CustomButton from './CustomButton';
 
 interface InputFieldProps {
-  type?: 'text' | 'email' | 'number';
+  type?: 'text' | 'email' | 'number' | 'search';
   value?: string;
   placeholder?: string;
   className?: string;

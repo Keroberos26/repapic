@@ -7,6 +7,7 @@ import config from '../../config';
 import Container from '../../components/Container';
 import Box from '../../components/Box';
 import ProductDetail from './ProductDetail';
+import ProductImages from './ProductImages';
 
 const Product: FC = () => {
   const { productSlug } = useParams();
@@ -21,8 +22,9 @@ const Product: FC = () => {
       </Breadcrumbs>
       <Container verticalAlign>
         <Box type="shadow" className="p-[10px] md:py-5 lg:px-5 lg:py-[30px] grid lg:grid-cols-2 gap-7">
-          <div>1</div>
-          {data && <ProductDetail data={data} />}
+          {data && <></>}
+          <ProductImages data={data} />
+          <ProductDetail data={data} />
         </Box>
       </Container>
     </>

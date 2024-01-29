@@ -11,6 +11,7 @@ const Search: FC = () => {
       placeholder="Tìm kiếm sản phẩm ở đây ..."
       value={searchValue}
       className="text-sm"
+      type="search"
       onChange={(e) => setSearchValue(e.target.value)}
     />
   );
