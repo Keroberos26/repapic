@@ -2,6 +2,7 @@ import config from '../config';
 import AdminLayout from '../layouts/AdminLayout';
 import MainLayout from '../layouts/MainLayout/MainLayout';
 import Collections from '../pages/Collections';
+import Contact from '../pages/Contact/Contact';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import Product from '../pages/Product';
@@ -29,6 +30,10 @@ export const publicRoutes: RouteType[] = [
       {
         path: config.routes.product,
         element: Product,
+      },
+      {
+        path: config.routes.contact,
+        element: Contact,
       },
       {
         path: config.routes.signIn,

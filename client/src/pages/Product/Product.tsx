@@ -8,6 +8,8 @@ import Container from '../../components/Container';
 import Box from '../../components/Box';
 import ProductDetail from './ProductDetail';
 import ProductImages from './ProductImages';
+import ProductList from '../../components/ProductList';
+import Heading from '../Home/Heading';
 
 const Product: FC = () => {
   const { productSlug } = useParams();
@@ -25,6 +27,10 @@ const Product: FC = () => {
           <ProductImages data={data} />
           <ProductDetail data={data} />
         </Box>
+        <div className="my-20">
+          <Heading title="Sản phẩm tương tự" prevNav="btn-prev" nextNav="btn-next" />
+          <ProductList url="/product" limit={10} prevNav="btn-prev" nextNav="btn-next" />
+        </div>
       </Container>
     </>
   );

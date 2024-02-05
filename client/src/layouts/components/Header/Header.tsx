@@ -48,7 +48,7 @@ const Header: FC = () => {
                 </Link>
               </Button>
               <Button color="inherit" sx={{ padding: 0 }}>
-                <Link to={config.routes.home} className="px-5 py-[15px] text-sm">
+                <Link to={config.routes.contact} className="px-5 py-[15px] text-sm">
                   Liên hệ
                 </Link>
               </Button>
