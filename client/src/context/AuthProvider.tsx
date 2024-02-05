@@ -1,7 +1,9 @@
 import React, { FC, createContext, useEffect, useReducer } from 'react';
 
+const storedUser = sessionStorage.getItem('user');
+
 const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem('user') || '') || null,
+  user: storedUser ? JSON.parse(storedUser) : null,
   loading: false,
   error: null,
 };
@@ -53,7 +55,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(state.user));
+    sessionStorage.setItem('user', JSON.stringify(state.user));
   }, [state.user]);
 
   return <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>;

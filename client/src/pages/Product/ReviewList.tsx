@@ -15,7 +15,7 @@ const ReviewList = () => {
       <h3 className="flex items-center justify-between">
         <span className="text-xl font-bold">Đánh giá</span>
         <FormControl>
-          <Select labelId="demo-simple-select-label" id="demo-simple-select" value={filter} onChange={handleChange}>
+          <Select value={filter} onChange={handleChange}>
             <MenuItem value={0}>Tất cả</MenuItem>
             <MenuItem value={1}>1 sao</MenuItem>
             <MenuItem value={2}>2 sao</MenuItem>

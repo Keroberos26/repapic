@@ -22,7 +22,6 @@ const Product: FC = () => {
       </Breadcrumbs>
       <Container verticalAlign>
         <Box type="shadow" className="p-[10px] md:py-5 lg:px-5 lg:py-[30px] grid lg:grid-cols-2 gap-7">
-          {data && <></>}
           <ProductImages data={data} />
           <ProductDetail data={data} />
         </Box>
