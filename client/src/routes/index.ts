@@ -2,7 +2,7 @@ import config from '../config';
 import AdminLayout from '../layouts/AdminLayout';
 import MainLayout from '../layouts/MainLayout/MainLayout';
 import Collections from '../pages/Collections';
-import Contact from '../pages/Contact/Contact';
+import Contact from '../pages/Contact';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import Product from '../pages/Product';

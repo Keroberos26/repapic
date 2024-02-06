@@ -11,9 +11,13 @@
   --fade-color: #666;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Noto Sans', sans-serif;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 img {

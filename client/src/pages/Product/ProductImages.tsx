@@ -8,20 +8,21 @@ import { Skeleton } from '@mui/material';
 
 interface ProductImagesProps {
   data: ProductType;
+  loading: boolean;
 }
 
-const ProductImages: FC<ProductImagesProps> = ({ data }) => {
+const ProductImages: FC<ProductImagesProps> = ({ data, loading }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
 
-  const slides = data
-    ? data.images.map((img: string, index: number) => (
-        <SwiperSlide key={index}>
-          <Image src={img} alt={data.title + index} className="border aspect-square" rounded={5} />
-        </SwiperSlide>
-      ))
-    : Array.from({ length: 5 }, (_, index) => (
+  const slides = loading
+    ? Array.from({ length: 5 }, (_, index) => (
         <SwiperSlide key={index}>
           <Skeleton variant="rounded" width={'100%'} className="pb-[100%]" />
+        </SwiperSlide>
+      ))
+    : data?.images.map((img: string, index: number) => (
+        <SwiperSlide key={index}>
+          <Image src={img} alt={data.title + index} className="border aspect-square" rounded={5} />
         </SwiperSlide>
       ));
 

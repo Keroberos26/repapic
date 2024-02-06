@@ -13,7 +13,7 @@ import Heading from '../Home/Heading';
 
 const Product: FC = () => {
   const { productSlug } = useParams();
-  const { data } = useFetch(`/products/${productSlug}`);
+  const { data, loading } = useFetch(`/products/${productSlug}`);
 
   return (
     <>
@@ -24,8 +24,8 @@ const Product: FC = () => {
       </Breadcrumbs>
       <Container verticalAlign>
         <Box type="shadow" className="p-[10px] md:py-5 lg:px-5 lg:py-[30px] grid lg:grid-cols-2 gap-7">
-          <ProductImages data={data} />
-          <ProductDetail data={data} />
+          <ProductImages data={data} loading={loading} />
+          <ProductDetail data={data} loading={loading} />
         </Box>
         <div className="my-20">
           <Heading title="Sản phẩm tương tự" prevNav="btn-prev" nextNav="btn-next" />

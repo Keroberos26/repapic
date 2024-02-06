@@ -10,6 +10,7 @@ import { LiaRandomSolid } from 'react-icons/lia';
 import { IoEyeOutline } from 'react-icons/io5';
 import config from '../config';
 import { ProductType } from '../types';
+import ProductQuickView from './ProductQuickView';
 
 interface ProductCardProps {
   data: ProductType;
@@ -38,6 +39,15 @@ export const ProductCardSkeleton: FC = () => {
 
 const ProductCard: FC<ProductCardProps> = ({ data }) => {
   const [isHover, setIsHover] = useState<boolean>(false);
+  const [openQuickView, setOpenQuickView] = useState(false);
+
+  const handleOpenQuickView = () => {
+    setOpenQuickView(true);
+  };
+
+  const handleCloseQuickView = () => {
+    setOpenQuickView(false);
+  };
 
   const buttonStyle =
     'size-[30px] bg-white bg-opacity-70 hover:bg-main hover:bg-opacity-100 transition-all duration-300 inline-flex justify-center items-center rounded-full';
@@ -94,6 +104,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
             className={`${buttonStyle} ${
               isHover ? 'lg:translate-x-0' : 'lg:translate-x-10'
             } lg:delay-150 hidden lg:inline-flex`}
+            onClick={handleOpenQuickView}
           >
             <IoEyeOutline />
           </button>
@@ -124,6 +135,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
           {data.discountPercentage > 0 && <del className="text-[0.8em] text-[#999]">{formatPrice(data.price)}</del>}
         </div>
       </div>
+      <ProductQuickView data={data} open={openQuickView} onClose={handleCloseQuickView} />
     </div>
   );
 };

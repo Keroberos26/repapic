@@ -14,7 +14,7 @@ const CATE_ITEMS = [
     title: 'SALES',
   },
   {
-    to: '/',
+    to: config.routes.contact,
     title: 'Liên hệ',
   },
 ];

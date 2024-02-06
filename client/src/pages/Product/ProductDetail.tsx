@@ -11,9 +11,10 @@ import ReviewList from './ReviewList';
 
 interface ProductDetailProps {
   data: ProductType;
+  loading: boolean;
 }
 
-const ProductDetail: FC<ProductDetailProps> = ({ data }) => {
+const ProductDetail: FC<ProductDetailProps> = ({ data, loading }) => {
   const [quantity, setQuantity] = useState<number>(1);
 
   const handleDecrease = () => {
@@ -29,34 +30,34 @@ const ProductDetail: FC<ProductDetailProps> = ({ data }) => {
   return (
     <div className="flex flex-col gap-4 lg:gap-5">
       <h1 className="text-xl font-bold lg:text-2xl">
-        {data ? data.title : <Skeleton variant="text" sx={{ fontSize: '1em' }} animation="wave" />}
+        {loading ? <Skeleton variant="text" sx={{ fontSize: '1em' }} animation="wave" /> : data?.title}
       </h1>
       <div className="flex items-center gap-3">
-        {data ? (
-          <>
-            <CustomRating value={data.rating} readOnly />
-            <span>{data.rating}/5</span>
-          </>
-        ) : (
+        {loading ? (
           <Skeleton variant="rounded" height={24} width={'30%'} animation="wave" />
+        ) : (
+          <>
+            <CustomRating value={data?.rating} readOnly />
+            <span>{data?.rating}/5</span>
+          </>
         )}
       </div>
       <div className="flex items-center gap-3">
-        {data ? (
+        {loading ? (
+          <Skeleton variant="rounded" height={30} width={'50%'} animation="wave" />
+        ) : (
           <>
             <span className="text-2xl font-bold">
-              {formatPrice(data.price - (data.price * data.discountPercentage) / 100)}
+              {formatPrice(data?.price - (data?.price * data?.discountPercentage) / 100)}
             </span>
-            <del className="self-end text-fade">{formatPrice(data.price)}</del>
-            <Chip label={`${Math.round(data.discountPercentage)}%`} color="success" />
+            <del className="self-end text-fade">{formatPrice(data?.price)}</del>
+            <Chip label={`${Math.round(data?.discountPercentage)}%`} color="success" />
           </>
-        ) : (
-          <Skeleton variant="rounded" height={30} width={'50%'} animation="wave" />
         )}
       </div>
       <p className="text-sm md:text-base">
-        {data ? (
-          data.description
+        {!loading ? (
+          data?.description
         ) : (
           <>
             <Skeleton variant="text" sx={{ fontSize: '1em' }} animation="wave" />
