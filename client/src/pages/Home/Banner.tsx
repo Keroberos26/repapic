@@ -84,31 +84,31 @@ const Banner: FC = () => {
       </div>
       <div className="grid grid-cols-2 lg:gap-5 gap-[10px] md:grid-cols-4 lg:grid-cols-2">
         <BannerContent
-          src="/assets/img/catbanner-01.jpg"
-          subtitle="Best sale"
-          title="Laptops Max"
-          description="From $1699.00 or $64.62/mo."
+          src="/assets/img/catbanner-02.png"
+          subtitle="Bán chạy nhất"
+          title="Cute Puppy"
+          description="Giá chỉ từ 120.000đ bao gồm phụ kiện"
         />
 
         <BannerContent
-          src="/assets/img/catbanner-03.jpg"
-          subtitle="NEW ARRIVAL"
-          title="Buy IPad Air"
-          description="From $599 or $49.91/mo. for 12 mo. *"
+          src="/assets/img/catbanner-01.png"
+          subtitle="Tranh mới"
+          title="Summer Orange"
+          description="Mua sắm các phong cách và màu sắc mới nhất"
         />
 
         <BannerContent
-          src="/assets/img/catbanner-02.jpg"
-          subtitle="15% OFF"
-          title="Smartwatch 7"
-          description="Shop the latest band styles and colors."
+          src="/assets/img/catbanner-04.png"
+          subtitle="Giảm giá 5%"
+          title="Flowers"
+          description="Sáng tạo và tiết kiệm một cách khoa học"
         />
 
         <BannerContent
-          src="/assets/img/catbanner-04.jpg"
-          subtitle="FREE ENGRAVING"
-          title="AirPods Max"
-          description="High-fidelity playback & ultra-low distortion"
+          src="/assets/img/catbanner-03.png"
+          subtitle="Bảo vệ môi trường"
+          title="Flora"
+          description="Góp phần tái sử dụng giấy và rác thải"
         />
       </div>
     </div>
