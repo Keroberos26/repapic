@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import bcrypt from 'bcrypt';
 
 const User = new Schema(
   {
@@ -14,6 +15,7 @@ const User = new Schema(
       type: String,
       lowercase: true,
       required: true,
+      unique: true,
     },
     isAdmin: {
       type: Boolean,
@@ -40,8 +42,22 @@ const User = new Schema(
         ref: 'Product',
       },
     ],
+    refreshToken: {
+      type: String,
+    },
   },
   { timestamps: true },
 );
+
+User.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+
+  const salt = bcrypt.genSaltSync(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+User.methods.isPasswordMatched = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
 export default model('User', User);
