@@ -7,11 +7,13 @@ module.exports = {
         primary: 'var(--primary-color)',
         secondary: 'var(--secondary-color)',
         default: 'var(--default-color)',
+        fade: 'var(--fade-color)',
       },
       colors: {
         primary: 'var(--primary-color)',
         secondary: 'var(--secondary-color)',
         default: 'var(--default-color)',
+        fade: 'var(--fade-color)',
       },
     },
   },

@@ -1,5 +1,7 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import config from './config';
 import { publicRoutes } from './routes';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
@@ -18,6 +20,10 @@ const App = () => {
               </Route>
             );
           })}
+          <Route path={config.layouts.auth}>
+            <Route index element={<Navigate to={config.routes.login} replace />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
