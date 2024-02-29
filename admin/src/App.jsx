@@ -1,16 +1,27 @@
-function App() {
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { publicRoutes } from './routes';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="text-red-500 App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {publicRoutes.map((layout, indexLayout) => {
+            const Layout = layout.element;
+
+            return (
+              <Route key={indexLayout} path={layout.path} element={<Layout />}>
+                {layout.components.map((page, indexPage) => {
+                  const Page = page.element;
+                  return <Route key={indexPage} path={page.path} element={<Page />} />;
+                })}
+              </Route>
+            );
+          })}
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
