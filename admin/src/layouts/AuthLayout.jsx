@@ -1,10 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
 
-const AuthLayout = (props) => {
-  return <div>AuthLayout</div>;
+const AuthLayout = () => {
+  return (
+    <div className="flex h-screen">
+      <main className="flex items-center px-16">
+        <Outlet />
+      </main>
+      <div className="flex-grow p-4">
+        <img
+          src="https://minimals.cc/assets/background/overlay_3.jpg"
+          alt="Auth"
+          className="object-cover w-full h-full"
+        />
+      </div>
+    </div>
+  );
 };
-
-AuthLayout.propTypes = {};
 
 export default AuthLayout;

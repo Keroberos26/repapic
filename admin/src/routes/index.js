@@ -1,14 +1,14 @@
 import config from '../config';
-import AdminLayout from '../layouts/AdminLayout';
-import Dashboard from '../pages/Dashboard';
+import AuthLayout from '../layouts/AuthLayout';
+import Login from '../pages/Login';
 export const publicRoutes = [
   {
-    path: config.layouts.admin,
-    element: AdminLayout,
+    path: config.layouts.auth,
+    element: AuthLayout,
     components: [
       {
-        path: config.routes.dashboard,
-        element: Dashboard,
+        path: config.routes.login,
+        element: Login,
       },
     ],
   },

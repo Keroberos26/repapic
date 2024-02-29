@@ -1,6 +1,6 @@
 const layouts = {
   auth: '/',
-  admin: '/admin',
+  admin: '/admin/',
 };
 
 export default layouts;
