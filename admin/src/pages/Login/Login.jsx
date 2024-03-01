@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import config from '../../config';
 import { Button, Link, InputLabel, OutlinedInput } from '../../components';
-import useDocumentTitle from '../../hooks/useDocumentTitle';
+import { useDocumentTitle } from '../../hooks';
 import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
@@ -32,9 +32,9 @@ const Login = () => {
   };
 
   return (
-    <div className="w-[352px]">
+    <div className="w-full max-lg:bg-white max-lg:rounded-2xl max-lg:py-10 max-lg:px-6 max-lg:shadow-sm">
       <div className="mb-10">
-        <h4 className="mb-4 text-2xl font-bold leading-[1.5]">Đăng nhập vào REPAPIC.</h4>
+        <h4 className="mb-4 text-xl lg:text-2xl font-bold leading-[1.5]">Đăng nhập vào REPAPIC.</h4>
         <p className="text-sm">
           Người dùng mới?{' '}
           <Link to={config.routes.register} underline="hover" bold>
@@ -42,7 +42,7 @@ const Login = () => {
           </Link>
         </p>
       </div>
-      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-5 none" onSubmit={handleSubmit}>
         <FormControl variant="outlined" color="default" error={!!errorCredentials.email}>
           <InputLabel htmlFor="email">Email</InputLabel>
           <OutlinedInput id="email" label="Email" value={credentials.email} onChange={handleChange} />
@@ -72,7 +72,7 @@ const Login = () => {
           />
           {errorCredentials.password && <FormHelperText>{errorCredentials.password}</FormHelperText>}
         </FormControl>
-        <Link to={config.routes.forgotPassword} className="text-right" color="inherit" sx={{ fontSize: 14 }}>
+        <Link to={config.routes.verify} className="text-right" color="inherit" sx={{ fontSize: 14 }}>
           Quên mật khẩu?
         </Link>
         <Button

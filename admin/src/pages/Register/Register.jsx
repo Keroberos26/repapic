@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import config from '../../config';
 import { Button, Link, InputLabel, OutlinedInput } from '../../components';
-import useDocumentTitle from '../../hooks/useDocumentTitle';
+import { useDocumentTitle } from '../../hooks';
 import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
@@ -38,9 +38,9 @@ const Register = () => {
   };
 
   return (
-    <div className="w-[352px]">
+    <div className="w-full max-lg:bg-white max-lg:rounded-2xl max-lg:py-10 max-lg:px-6 max-lg:shadow-sm">
       <div className="mb-10">
-        <h4 className="mb-4 text-2xl font-bold leading-[1.5]">Bắt đầu hoàn toàn miễn phí</h4>
+        <h4 className="mb-4 text-xl lg:text-2xl font-bold leading-[1.5]">Bắt đầu hoàn toàn miễn phí</h4>
         <p className="text-sm">
           Bạn đã có tài khoản?{' '}
           <Link to={config.routes.login} bold underline="hover">
@@ -49,7 +49,7 @@ const Register = () => {
         </p>
       </div>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-5 sm:gap-4 sm:flex-row">
           <FormControl variant="outlined" color="default" error={!!errorCredentials.firstName}>
             <InputLabel htmlFor="firstName">Họ</InputLabel>
             <OutlinedInput id="firstName" label="Họ" value={credentials.firstName} onChange={handleChange} />

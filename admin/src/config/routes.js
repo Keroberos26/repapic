@@ -5,6 +5,7 @@ const routes = {
   login: layouts.auth + 'login',
   register: layouts.auth + 'register',
   forgotPassword: layouts.auth + 'forgot-password',
+  verify: layouts.auth + 'verify',
 };
 
 export default routes;

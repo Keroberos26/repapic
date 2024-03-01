@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { FormControl, FormHelperText } from '@mui/material';
 import { Button, InputLabel, OutlinedInput, Link } from '../../components';
-import { Link as LinkRouter } from 'react-router-dom';
 import config from '../../config';
 import { validateEmail } from '../../utils/validation';
+import { useDocumentTitle } from '../../hooks';
 
 const ForgotPassword = () => {
+  useDocumentTitle('Quên mật khẩu? | REPAPIC.');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 
@@ -26,7 +27,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="max-w-[420px] w-full bg-white rounded-2xl py-10 px-6">
+    <div className="max-w-[420px] w-full bg-white rounded-2xl py-10 px-6 shadow-sm">
       <div className="h-24">
         <svg className="h-full mx-auto" fill="none" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -125,16 +126,11 @@ const ForgotPassword = () => {
         <Button variant="contained" color="default" type="submit">
           Gửi yêu cầu
         </Button>
-        <Link
-          component={LinkRouter}
-          to={config.routes.login}
-          color="inherit"
-          underline="hover"
-          bold
-          className="text-center"
-        >
-          Trở về đăng nhập
-        </Link>
+        <div className="text-sm text-center">
+          <Link to={config.routes.login} color="inherit" underline="hover" bold>
+            Trở về đăng nhập
+          </Link>
+        </div>
       </form>
     </div>
   );

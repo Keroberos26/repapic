@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button } from '../../components';
 import { useNavigate } from 'react-router-dom';
+import { useDocumentTitle } from '../../hooks';
 
 const NotFound = () => {
+  useDocumentTitle('404 Không tìm thấy trang! | REPAPIC.');
   const navigate = useNavigate();
 
   return (
