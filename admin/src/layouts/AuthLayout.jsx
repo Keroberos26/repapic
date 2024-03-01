@@ -8,11 +8,7 @@ const AuthLayout = () => {
         <Outlet />
       </main>
       <div className="flex-grow p-4">
-        <img
-          src="https://minimals.cc/assets/background/overlay_3.jpg"
-          alt="Auth"
-          className="object-cover w-full h-full"
-        />
+        <img src="/images/backgrounds/overlay_3.jpg" alt="Auth" className="object-cover w-full h-full" />
       </div>
     </div>
   );

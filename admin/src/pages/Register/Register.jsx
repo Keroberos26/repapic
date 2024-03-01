@@ -7,10 +7,10 @@ import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/ma
 import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
 
-const Login = () => {
-  useDocumentTitle('Đăng nhập | REPAPIC.');
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
-  const [errorCredentials, setErrorCredentials] = useState({ email: '', password: '' });
+const Register = () => {
+  useDocumentTitle('Đăng ký | REPAPIC.');
+  const [credentials, setCredentials] = useState({ firstName: '', lastName: '', email: '', password: '' });
+  const [errorCredentials, setErrorCredentials] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event) => {
@@ -23,6 +23,12 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!credentials.firstName) {
+      setErrorCredentials((prev) => ({ ...prev, firstName: 'Vui lòng nhập họ' }));
+    }
+    if (!credentials.lastName) {
+      setErrorCredentials((prev) => ({ ...prev, lastName: 'Vui lòng nhập tên' }));
+    }
     if (!credentials.email) {
       setErrorCredentials((prev) => ({ ...prev, email: 'Vui lòng nhập email' }));
     }
@@ -35,15 +41,27 @@ const Login = () => {
   return (
     <div className="w-[352px]">
       <div className="mb-10">
-        <h4 className="mb-4 text-2xl font-bold leading-[1.5]">Đăng nhập vào REPAPIC.</h4>
+        <h4 className="mb-4 text-2xl font-bold leading-[1.5]">Bắt đầu hoàn toàn miễn phí</h4>
         <p className="text-sm">
-          Người dùng mới?{' '}
-          <Link className="font-semibold text-primary" to={config.routes.register}>
-            Tạo tài khoản
+          Bạn đã có tài khoản?{' '}
+          <Link className="font-semibold text-primary" to={config.routes.login}>
+            Đăng nhập ngay
           </Link>
         </p>
       </div>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+        <div className="flex gap-4">
+          <FormControl variant="outlined" color="default" error={!!errorCredentials.firstName}>
+            <InputLabel htmlFor="firstName">Họ</InputLabel>
+            <OutlinedInput id="firstName" label="Họ" value={credentials.firstName} onChange={handleChange} />
+            {errorCredentials.firstName && <FormHelperText>{errorCredentials.firstName}</FormHelperText>}
+          </FormControl>
+          <FormControl variant="outlined" color="default" error={!!errorCredentials.lastName}>
+            <InputLabel htmlFor="lastName">Tên</InputLabel>
+            <OutlinedInput id="lastName" label="Tên" value={credentials.lastName} onChange={handleChange} />
+            {errorCredentials.lastName && <FormHelperText>{errorCredentials.lastName}</FormHelperText>}
+          </FormControl>
+        </div>
         <FormControl variant="outlined" color="default" error={!!errorCredentials.email}>
           <InputLabel htmlFor="email">Email</InputLabel>
           <OutlinedInput id="email" label="Email" value={credentials.email} onChange={handleChange} />
@@ -73,9 +91,6 @@ const Login = () => {
           />
           {errorCredentials.password && <FormHelperText>{errorCredentials.password}</FormHelperText>}
         </FormControl>
-        <Link className="text-sm text-right underline" to="/">
-          Quên mật khẩu?
-        </Link>
         <Button
           type="submit"
           variant="contained"
@@ -83,11 +98,15 @@ const Login = () => {
           endIcon={<FaAngleRight />}
           sx={{ justifyContent: 'space-between' }}
         >
-          Đăng nhập
+          Tạo tài khoản
         </Button>
+        <p className="text-xs text-center text-fade leading-[1.5]">
+          Bằng cách đăng ký, tôi đồng ý với <Link className="underline text-default">Điều khoản dịch vụ</Link> và{' '}
+          <Link className="underline text-default">Chính sách quyền riêng tư</Link>.
+        </p>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;
