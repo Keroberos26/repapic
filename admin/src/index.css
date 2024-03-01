@@ -16,7 +16,7 @@ html {
 body {
   font-family: "Public Sans", sans-serif;
   font-optical-sizing: auto;
-  color: var(--default-color)
+  color: var(--default-color);
 }
 
 .background-3::before {

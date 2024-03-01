@@ -5,6 +5,7 @@ import BaseLayout from './layouts/BaseLayout';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
             <Route path={config.routes.register} element={<Register />} />
           </Route>
           <Route path={config.layouts.auth} element={<BaseLayout />}>
+            <Route path={config.routes.forgotPassword} element={<ForgotPassword />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

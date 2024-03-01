@@ -13,7 +13,7 @@ const BaseLayout = () => {
           </div>
         </Container>
       </header>
-      <div className="flex items-center justify-center flex-grow background-3">
+      <div className="flex items-center justify-center flex-grow px-4 background-3">
         <Outlet />
       </div>
     </div>

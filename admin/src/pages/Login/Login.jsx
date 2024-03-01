@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import config from '../../config';
-import { Button, InputLabel, OutlinedInput } from '../../components';
+import { Button, Link, InputLabel, OutlinedInput } from '../../components';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
-import { Link } from 'react-router-dom';
 import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
@@ -38,7 +37,7 @@ const Login = () => {
         <h4 className="mb-4 text-2xl font-bold leading-[1.5]">Đăng nhập vào REPAPIC.</h4>
         <p className="text-sm">
           Người dùng mới?{' '}
-          <Link className="font-semibold text-primary" to={config.routes.register}>
+          <Link to={config.routes.register} underline="hover" bold>
             Tạo tài khoản
           </Link>
         </p>
@@ -73,7 +72,7 @@ const Login = () => {
           />
           {errorCredentials.password && <FormHelperText>{errorCredentials.password}</FormHelperText>}
         </FormControl>
-        <Link className="text-sm text-right underline" to="/">
+        <Link to={config.routes.forgotPassword} className="text-right" color="inherit" sx={{ fontSize: 14 }}>
           Quên mật khẩu?
         </Link>
         <Button

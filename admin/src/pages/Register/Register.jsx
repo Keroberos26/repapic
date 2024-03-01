@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import config from '../../config';
-import { Button, InputLabel, OutlinedInput } from '../../components';
+import { Button, Link, InputLabel, OutlinedInput } from '../../components';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
-import { Link } from 'react-router-dom';
 import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
@@ -44,7 +43,7 @@ const Register = () => {
         <h4 className="mb-4 text-2xl font-bold leading-[1.5]">Bắt đầu hoàn toàn miễn phí</h4>
         <p className="text-sm">
           Bạn đã có tài khoản?{' '}
-          <Link className="font-semibold text-primary" to={config.routes.login}>
+          <Link to={config.routes.login} bold underline="hover">
             Đăng nhập ngay
           </Link>
         </p>
@@ -101,8 +100,15 @@ const Register = () => {
           Tạo tài khoản
         </Button>
         <p className="text-xs text-center text-fade leading-[1.5]">
-          Bằng cách đăng ký, tôi đồng ý với <Link className="underline text-default">Điều khoản dịch vụ</Link> và{' '}
-          <Link className="underline text-default">Chính sách quyền riêng tư</Link>.
+          Bằng cách đăng ký, tôi đồng ý với{' '}
+          <Link color="inherit" className="text-[1em]">
+            Điều khoản dịch vụ
+          </Link>{' '}
+          và{' '}
+          <Link color="inherit" className="text-[1em]">
+            Chính sách quyền riêng tư
+          </Link>
+          .
         </p>
       </form>
     </div>
