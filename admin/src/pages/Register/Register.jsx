@@ -34,7 +34,6 @@ const Register = () => {
     if (!credentials.password) {
       setErrorCredentials((prev) => ({ ...prev, password: 'Vui lòng nhập mật khẩu' }));
     }
-    console.log(errorCredentials);
   };
 
   return (

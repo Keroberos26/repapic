@@ -5,12 +5,14 @@ import { useDocumentTitle } from '../../hooks';
 import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
   useDocumentTitle('Đăng nhập | REPAPIC.');
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [errorCredentials, setErrorCredentials] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
+  const { loading, error, login } = useAuth();
 
   const handleChange = (event) => {
     setCredentials((prev) => ({ ...prev, [event.target.id]: event.target.value }));
@@ -22,13 +24,22 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!credentials.email) {
-      setErrorCredentials((prev) => ({ ...prev, email: 'Vui lòng nhập email' }));
+    if (credentials.email && credentials.password) {
+      login(credentials).then((res) => {
+        if (res) {
+          console.log('Success');
+        } else {
+          console.log(error);
+        }
+      });
+    } else {
+      if (!credentials.email) {
+        setErrorCredentials((prev) => ({ ...prev, email: 'Vui lòng nhập email' }));
+      }
+      if (!credentials.password) {
+        setErrorCredentials((prev) => ({ ...prev, password: 'Vui lòng nhập mật khẩu' }));
+      }
     }
-    if (!credentials.password) {
-      setErrorCredentials((prev) => ({ ...prev, password: 'Vui lòng nhập mật khẩu' }));
-    }
-    console.log(errorCredentials);
   };
 
   return (
@@ -72,7 +83,7 @@ const Login = () => {
           />
           {errorCredentials.password && <FormHelperText>{errorCredentials.password}</FormHelperText>}
         </FormControl>
-        <Link to={config.routes.verify} className="text-right" color="inherit" sx={{ fontSize: 14 }}>
+        <Link to={config.routes.forgotPassword} className="text-right" color="inherit" sx={{ fontSize: 14 }}>
           Quên mật khẩu?
         </Link>
         <Button
@@ -81,6 +92,7 @@ const Login = () => {
           color="default"
           endIcon={<FaAngleRight />}
           sx={{ justifyContent: 'space-between' }}
+          loading={loading}
         >
           Đăng nhập
         </Button>
