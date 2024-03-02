@@ -1,6 +1,7 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { LoadingTopBar } from './components';
 import config from './config';
+import AdminLayout from './layouts/AdminLayout';
 import AuthLayout from './layouts/AuthLayout';
 import BaseLayout from './layouts/BaseLayout';
 import NotFound from './pages/NotFound';
@@ -8,6 +9,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import Verify from './pages/Verify';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
   return (
@@ -24,6 +26,9 @@ const App = () => {
             <Route path={config.routes.forgotPassword} element={<ForgotPassword />} />
             <Route path={config.routes.verify} element={<Verify />} />
             <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route path={config.layouts.admin} element={<AdminLayout />}>
+            <Route path={config.routes.dashboard} element={<Dashboard />} />
           </Route>
         </Routes>
       </Router>

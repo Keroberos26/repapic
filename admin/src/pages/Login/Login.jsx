@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import config from '../../config';
-import { Button, Link, InputLabel, OutlinedInput } from '../../components';
+import { Alert, Button, Link, InputLabel, OutlinedInput } from '../../components';
 import { useDocumentTitle } from '../../hooks';
 import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   useDocumentTitle('Đăng nhập | REPAPIC.');
@@ -13,6 +14,7 @@ const Login = () => {
   const [errorCredentials, setErrorCredentials] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const { loading, error, login } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setCredentials((prev) => ({ ...prev, [event.target.id]: event.target.value }));
@@ -27,9 +29,7 @@ const Login = () => {
     if (credentials.email && credentials.password) {
       login(credentials).then((res) => {
         if (res) {
-          console.log('Success');
-        } else {
-          console.log(error);
+          navigate(config.routes.dashboard);
         }
       });
     } else {
@@ -81,8 +81,9 @@ const Login = () => {
               </InputAdornment>
             }
           />
-          {errorCredentials.password && <FormHelperText>{errorCredentials.password}</FormHelperText>}
+          {/* {errorCredentials.password && <FormHelperText>{errorCredentials.password}</FormHelperText>} */}
         </FormControl>
+        {error?.data?.message && <Alert severity="error">{error.data.message}</Alert>}
         <Link to={config.routes.forgotPassword} className="text-right" color="inherit" sx={{ fontSize: 14 }}>
           Quên mật khẩu?
         </Link>

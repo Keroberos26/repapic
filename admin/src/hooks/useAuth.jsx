@@ -8,7 +8,7 @@ const useAuth = () => {
   const login = (credentials) => {
     dispatch({ type: 'LOGIN_START' });
     return axios
-      .post('https://dummyjson.com/auth/login', { username: credentials.email, password: credentials.password })
+      .post('/auth/login', { ...credentials })
       .then((res) => {
         dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
         return true;
