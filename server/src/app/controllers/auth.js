@@ -2,7 +2,7 @@ import User from '../models/User.js';
 import asyncHandler from 'express-async-handler';
 import { createError } from '../../utils/error.js';
 import { generateAccessToken, generateRefreshToken } from '../../utils/token.js';
-import jwt, { decode } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 export const register = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
@@ -17,7 +17,7 @@ export const register = asyncHandler(async (req, res) => {
 export const login = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    throw createError(404, 'Email chưa được đăng ký!');
+    throw createError(401, 'Email chưa được đăng ký!');
   }
   if (!(await user.isPasswordMatched(req.body.password))) {
     throw createError(400, 'Mật khẩu không đúng!');
@@ -29,13 +29,13 @@ export const login = asyncHandler(async (req, res) => {
   const { password, isAdmin, refreshToken, ...otherDetails } = user._doc;
   res
     .status(200)
-    .cookie('refreshToken', newRefreshToken, { httpOnly: true, signed: true, secure: true })
+    .cookie('refreshToken', newRefreshToken, { httpOnly: true, signed: true })
     .json({ ...otherDetails, token: accessToken });
 });
 
 export const refreshToken = asyncHandler(async (req, res) => {
   const refreshToken = req.signedCookies.refreshToken;
-  if (!refreshToken) throw createError(404, 'Không có refresh token!');
+  if (!refreshToken) throw createError(400, 'Không có refresh token!');
 
   const user = await User.findOne({ refreshToken });
   if (!user) throw createError(404, 'Không tồn tài người dùng!');

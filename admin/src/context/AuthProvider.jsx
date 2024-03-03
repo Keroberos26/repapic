@@ -1,9 +1,8 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 const INITIAL_STATE = {
-  user: localStorage.getItem('user') || null,
+  user: JSON.parse(localStorage.getItem('user')) || null,
   loading: false,
   error: null,
 };
@@ -50,18 +49,6 @@ const AuthProvider = ({ children }) => {
     } else {
       localStorage.removeItem('user');
     }
-
-    // Config Token vào Header
-    axios.interceptors.request.use((config) => {
-      const storedUser = JSON.parse(localStorage.getItem('user'));
-      const token = storedUser?.token;
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      } else {
-        config.headers.Authorization = null;
-      }
-      return config;
-    });
   }, [state.user]);
 
   return <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>;

@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthProvider';
-import axios from 'axios';
+import api from '../utils/api';
 
 const useAuth = () => {
   const { user, loading, error, dispatch } = useContext(AuthContext);
 
   const login = (credentials) => {
     dispatch({ type: 'LOGIN_START' });
-    return axios
+    return api
       .post('/auth/login', { ...credentials })
       .then((res) => {
         dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
@@ -20,6 +20,7 @@ const useAuth = () => {
   };
 
   const logout = () => {
+    api.get('/auth/logout');
     dispatch({ type: 'LOGOUT' });
   };
 

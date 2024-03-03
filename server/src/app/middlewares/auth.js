@@ -10,7 +10,7 @@ export const verifyToken = asyncHandler(async (req, res, next) => {
   }
 
   jwt.verify(token, process.env.ACCESS_TOKEN, (err, user) => {
-    if (err) throw createError(403, 'Token không hợp lệ!');
+    if (err) throw createError(401, 'Token không hợp lệ!');
     req.user = user;
     next();
   });
