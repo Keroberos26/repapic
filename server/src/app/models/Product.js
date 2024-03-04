@@ -41,6 +41,9 @@ const Product = new Schema(
       min: 0,
       max: 100,
     },
+    rating: {
+      type: String,
+    },
     reviews: [
       {
         type: Schema.Types.ObjectId,
