@@ -7,7 +7,7 @@ import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
 
 const Register = () => {
-  useDocumentTitle('Đăng ký | REPAPIC.');
+  useDocumentTitle('Đăng ký');
   const [credentials, setCredentials] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [errorCredentials, setErrorCredentials] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -91,7 +91,7 @@ const Register = () => {
         </FormControl>
         <Button
           type="submit"
-          variant="contained"
+          size="large"
           color="default"
           endIcon={<FaAngleRight />}
           sx={{ justifyContent: 'space-between' }}

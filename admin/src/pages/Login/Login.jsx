@@ -9,7 +9,7 @@ import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  useDocumentTitle('Đăng nhập | REPAPIC.');
+  useDocumentTitle('Đăng nhập');
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [errorCredentials, setErrorCredentials] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -89,8 +89,8 @@ const Login = () => {
         </Link>
         <Button
           type="submit"
-          variant="contained"
           color="default"
+          size="large"
           endIcon={<FaAngleRight />}
           sx={{ justifyContent: 'space-between' }}
           loading={loading}

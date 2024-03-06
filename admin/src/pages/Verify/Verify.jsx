@@ -5,7 +5,7 @@ import { useDocumentTitle, useLoading } from '../../hooks';
 import { FormHelperText } from '@mui/material';
 
 const Verify = () => {
-  useDocumentTitle('Xác nhận email | REPAPIC.');
+  useDocumentTitle('Xác nhận email');
   const inputsRef = useRef([]);
   const [error, setError] = useState('');
   const { setProgress } = useLoading();
@@ -216,7 +216,7 @@ const Verify = () => {
             {error}
           </FormHelperText>
         )}
-        <Button type="submit" variant="contained" color="default">
+        <Button type="submit" size="large" color="default">
           Xác thực
         </Button>
         <p className="text-sm text-center">

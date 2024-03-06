@@ -4,7 +4,7 @@ const useDocumentTitle = (title, prevailOnUnmount = false) => {
   const defaultTitle = useRef(document.title);
 
   useEffect(() => {
-    document.title = title;
+    document.title = title + ' | REPAPIC.';
   }, [title]);
 
   useEffect(

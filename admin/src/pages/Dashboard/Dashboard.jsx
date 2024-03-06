@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import api from '../../utils/api';
 import { Button } from '@mui/material';
+import { useDocumentTitle } from '../../hooks';
 
 const Dashboard = () => {
+  useDocumentTitle('Dashboard');
   const [pro, setPro] = useState({});
 
   const handleClick = () => {

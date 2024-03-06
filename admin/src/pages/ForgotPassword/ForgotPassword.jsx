@@ -6,7 +6,7 @@ import { validateEmail } from '../../utils/validation';
 import { useDocumentTitle } from '../../hooks';
 
 const ForgotPassword = () => {
-  useDocumentTitle('Quên mật khẩu? | REPAPIC.');
+  useDocumentTitle('Quên mật khẩu?');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 
@@ -123,7 +123,7 @@ const ForgotPassword = () => {
           <OutlinedInput id="email" label="Email" value={email} onChange={handleChange} />
           {error && <FormHelperText>{error}</FormHelperText>}
         </FormControl>
-        <Button variant="contained" color="default" type="submit">
+        <Button color="default" size="large" type="submit">
           Gửi yêu cầu
         </Button>
         <div className="text-sm text-center">

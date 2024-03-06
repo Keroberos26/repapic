@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDocumentTitle } from '../../hooks';
 
 const NotFound = () => {
-  useDocumentTitle('404 Không tìm thấy trang! | REPAPIC.');
+  useDocumentTitle('404 Không tìm thấy trang!');
   const navigate = useNavigate();
 
   return (
@@ -59,7 +59,7 @@ const NotFound = () => {
           </defs>
         </svg>
       </div>
-      <Button variant="contained" color="default" onClick={() => navigate('/')}>
+      <Button size="large" color="default" onClick={() => navigate('/')}>
         Trang chủ
       </Button>
     </div>
