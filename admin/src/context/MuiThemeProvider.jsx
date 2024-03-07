@@ -9,6 +9,7 @@ const createColor = (mainColor) => augmentColor({ color: { main: mainColor } });
 const theme = createTheme({
   typography: {
     fontFamily: ['Public Sans', 'Roboto', 'Arial', 'sans-serif'].join(','),
+    color: '#212B36',
   },
   palette: {
     default: createColor('#212B36'),
