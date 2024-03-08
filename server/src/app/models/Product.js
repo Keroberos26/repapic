@@ -7,12 +7,6 @@ const Product = new Schema(
       type: String,
       required: true,
     },
-    material: {
-      type: String,
-    },
-    source: {
-      type: String,
-    },
     slug: {
       type: String,
       slug: 'title',
@@ -22,19 +16,23 @@ const Product = new Schema(
       type: [String],
       required: true,
     },
-    price: {
+    description: {
       type: String,
-      min: 1000,
       required: true,
-    },
-    stock: {
-      type: String,
-      default: 0,
     },
     category: {
       type: Schema.Types.ObjectId,
       ref: 'Category',
       required: true,
+    },
+    price: {
+      type: Number,
+      min: 0,
+      required: true,
+    },
+    stock: {
+      type: Number,
+      default: 0,
     },
     discount: {
       type: Number,
