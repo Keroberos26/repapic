@@ -42,7 +42,8 @@ const Product = new Schema(
       max: 100,
     },
     rating: {
-      type: String,
+      type: Number,
+      default: 0,
     },
     reviews: [
       {
