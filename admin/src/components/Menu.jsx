@@ -8,6 +8,7 @@ const StyledMenu = styled(Menu)({
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
     backdropFilter: 'blur(20px)',
     maxWidth: 220,
+    minWidth: 132,
 
     '& .MuiList-root': {
       padding: 0,

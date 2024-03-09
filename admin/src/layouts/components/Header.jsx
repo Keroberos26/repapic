@@ -49,7 +49,7 @@ const Header = () => {
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'basic-button',
+          'aria-labelledby': 'user-button',
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
@@ -75,7 +75,7 @@ const Header = () => {
         }}
       >
         <div className="px-4 my-3">
-          <h6 className="font-semibold truncate">{user.name}</h6>
+          <h6 className="font-semibold truncate">{user.firstName + user.lastName}</h6>
           <p className="truncate text-fade">{user.email}</p>
         </div>
         <Divider />

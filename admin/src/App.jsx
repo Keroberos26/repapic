@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import Verify from './pages/Verify';
 import Dashboard from './pages/Dashboard';
+import UserList from './pages/UserManagement/UserList';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           </Route>
           <Route path={config.layouts.admin} element={<AdminLayout />}>
             <Route path={config.routes.dashboard} element={<Dashboard />} />
+            <Route path={config.routes.userList} element={<UserList />} />
           </Route>
         </Routes>
       </Router>

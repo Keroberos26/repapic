@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 import config from '../../config';
 import { Button, Link, InputLabel, OutlinedInput } from '../../components';
 import { useDocumentTitle } from '../../hooks';
-import { FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
+import { Alert, FormControl, FormHelperText, IconButton, InputAdornment } from '@mui/material';
 import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
+import api from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   useDocumentTitle('Đăng ký');
   const [credentials, setCredentials] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [errorCredentials, setErrorCredentials] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setCredentials((prev) => ({ ...prev, [event.target.id]: event.target.value }));
@@ -22,17 +26,24 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!credentials.firstName) {
-      setErrorCredentials((prev) => ({ ...prev, firstName: 'Vui lòng nhập họ' }));
-    }
-    if (!credentials.lastName) {
-      setErrorCredentials((prev) => ({ ...prev, lastName: 'Vui lòng nhập tên' }));
-    }
-    if (!credentials.email) {
-      setErrorCredentials((prev) => ({ ...prev, email: 'Vui lòng nhập email' }));
-    }
-    if (!credentials.password) {
-      setErrorCredentials((prev) => ({ ...prev, password: 'Vui lòng nhập mật khẩu' }));
+    if (credentials.firstName && credentials.lastName && credentials.email && credentials.password) {
+      api
+        .post('/auth/register', { ...credentials })
+        .then(() => navigate(config.routes.login))
+        .catch((err) => setError(err.response?.data?.message));
+    } else {
+      if (!credentials.firstName) {
+        setErrorCredentials((prev) => ({ ...prev, firstName: 'Vui lòng nhập họ' }));
+      }
+      if (!credentials.lastName) {
+        setErrorCredentials((prev) => ({ ...prev, lastName: 'Vui lòng nhập tên' }));
+      }
+      if (!credentials.email) {
+        setErrorCredentials((prev) => ({ ...prev, email: 'Vui lòng nhập email' }));
+      }
+      if (!credentials.password) {
+        setErrorCredentials((prev) => ({ ...prev, password: 'Vui lòng nhập mật khẩu' }));
+      }
     }
   };
 
@@ -89,6 +100,7 @@ const Register = () => {
           />
           {errorCredentials.password && <FormHelperText>{errorCredentials.password}</FormHelperText>}
         </FormControl>
+        {error && <Alert severity="error">{error}</Alert>}
         <Button
           type="submit"
           size="large"
