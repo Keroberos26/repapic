@@ -4,16 +4,20 @@ const Order = new Schema(
   {
     name: {
       type: String,
+      required: true,
     },
     address: {
       type: String,
+      required: true,
     },
     phone: {
       type: String,
+      required: true,
     },
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
+      required: true,
     },
     status: {
       type: String,
