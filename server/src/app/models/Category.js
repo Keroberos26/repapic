@@ -1,9 +1,9 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, plugin } from 'mongoose';
 import slug from 'mongoose-slug-updater';
 
 const Category = new Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
