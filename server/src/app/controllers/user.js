@@ -42,7 +42,8 @@ export const getUser = asyncHandler(async (req, res) => {
     if (!user) {
       throw createError(404, 'Không tìm thấy User!');
     }
-    res.status(200).json(user);
+    const { password, isAdmin, refreshToken, cart, wishlist, deliveryAddress, ...others } = user._doc;
+    res.status(200).json(others);
   } catch (error) {
     throw error;
   }
@@ -51,7 +52,13 @@ export const getUser = asyncHandler(async (req, res) => {
 export const getUsers = asyncHandler(async (req, res) => {
   try {
     const users = await User.find();
-    res.status(200).json(users);
+    const sanitizedUsers = users.map((user) => {
+      // Tạo một bản sao của đối tượng người dùng và loại bỏ thông tin nhạy cảm
+      const { password, isAdmin, refreshToken, cart, wishlist, deliveryAddress, ...others } = user._doc;
+      return others;
+    });
+
+    res.status(200).json(sanitizedUsers);
   } catch (error) {
     throw error;
   }

@@ -4,10 +4,9 @@ import { verifyAdmin, verifyUser } from '../app/middlewares/auth.js';
 
 const router = Router();
 
-router.post('/', verifyUser, createOrder);
 router.put('/:id', verifyAdmin, updateOrder);
-router.delete('/:id', verifyUser, deleteOrder);
-router.get('/:id', verifyUser, getOrder);
-router.get('/', verifyUser, getOrders);
+router.delete('/:id', verifyAdmin, deleteOrder);
+router.get('/:userId/:id', verifyUser, getOrder);
+router.get('/', verifyAdmin, getOrders);
 
 export default router;
