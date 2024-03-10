@@ -40,7 +40,7 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 
 export const getProduct = asyncHandler(async (req, res) => {
   try {
-    const product = await Product.findOne({ slug: req.params.slug }).select('-reviews').populate('category');
+    const product = await Product.findOne({ slug: req.params.slug }).populate('category');
     if (!product) {
       throw createError(404, 'Không tìm thấy sản phẩm!');
     }
