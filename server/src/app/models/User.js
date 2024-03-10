@@ -25,30 +25,58 @@ const User = new Schema(
       type: Boolean,
       default: false,
     },
+    address: String,
+    status: {
+      type: String,
+      enum: ['pending', 'verified', 'banned'],
+      default: 'pending',
+    },
     avatar: {
-      type: String,
-    },
-    city: {
-      type: String,
-    },
-    district: {
-      type: String,
-    },
-    ward: {
       type: String,
     },
     phone: {
       type: String,
     },
+    deliveryAddress: [
+      {
+        name: {
+          type: String,
+          required: true,
+        },
+        code: {
+          type: String,
+          required: true,
+        },
+        phone: {
+          type: String,
+          required: true,
+        },
+        tag: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+    cart: [
+      {
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+      },
+    ],
     wishlist: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Product',
       },
     ],
-    refreshToken: {
-      type: String,
-    },
+    refreshToken: String,
   },
   { timestamps: true },
 );

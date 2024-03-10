@@ -25,13 +25,6 @@ const Blog = new Schema(
       ref: 'User',
       required: true,
     },
-    comments: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-      },
-    ],
   },
   { timestamps: true },
 );

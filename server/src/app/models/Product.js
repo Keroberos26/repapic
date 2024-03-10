@@ -12,6 +12,10 @@ const Product = new Schema(
       slug: 'title',
       unique: true,
     },
+    thumbnail: {
+      type: String,
+      required: true,
+    },
     images: {
       type: [String],
       required: true,

@@ -2,23 +2,17 @@ import { Schema, model } from 'mongoose';
 
 const Review = new Schema(
   {
-    product: {
-      type: Schema.Types.ObjectId,
-      ref: 'Product',
-      required: true,
-    },
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
     rating: {
-      type: String,
+      type: Number,
       required: true,
     },
-    comment: {
-      type: String,
-    },
+    comment: String,
+    reply: String,
   },
   { timestamps: true },
 );

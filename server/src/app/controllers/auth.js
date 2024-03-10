@@ -26,11 +26,11 @@ export const login = asyncHandler(async (req, res) => {
   const accessToken = generateAccessToken({ id: user._id, isAdmin: user.isAdmin });
   const newRefreshToken = generateRefreshToken({ id: user._id, isAdmin: user.isAdmin });
   await User.findByIdAndUpdate(user._id, { refreshToken: newRefreshToken }, { new: true });
-  const { password, isAdmin, refreshToken, ...otherDetails } = user._doc;
+  const { password, isAdmin, refreshToken, cart, wishlist, deliveryAddress, ...others } = user._doc;
   res
     .status(200)
     .cookie('refreshToken', newRefreshToken, { httpOnly: true, signed: true })
-    .json({ ...otherDetails, token: accessToken });
+    .json({ ...others, token: accessToken });
 });
 
 export const refreshToken = asyncHandler(async (req, res) => {
