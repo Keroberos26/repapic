@@ -7,4 +7,6 @@ export { default as Link } from './Link';
 export { default as LoadingTopBar } from './LoadingTopBar';
 export { default as Menu } from './Menu';
 export { default as OutlinedInput } from './OutlinedInput';
+export { default as TableGrid } from './TableGrid';
 export { default as Tabs } from './Tabs';
+export { default as UpdateDelete } from './UpdateDelete';
