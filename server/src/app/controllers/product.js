@@ -38,7 +38,7 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 
 export const getProduct = asyncHandler(async (req, res) => {
   try {
-    const product = await Product.findOne({ slug: req.params.slug });
+    const product = await Product.findOne({ slug: req.params.slug }).select('-reviews').populate('category');
     if (!product) {
       throw createError(404, 'Không tìm thấy sản phẩm!');
     }
@@ -50,7 +50,7 @@ export const getProduct = asyncHandler(async (req, res) => {
 
 export const getProducts = asyncHandler(async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find().select('-reviews').populate('category');
     res.status(200).json(products);
   } catch (error) {
     throw error;
