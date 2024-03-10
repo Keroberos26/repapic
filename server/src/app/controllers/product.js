@@ -14,7 +14,9 @@ export const createProduct = asyncHandler(async (req, res) => {
 
 export const updateProduct = asyncHandler(async (req, res) => {
   try {
-    const product = await Product.findOneAndUpdate({ slug: req.params.slug }, { $set: req.body }, { new: true });
+    const product = await Product.findOneAndUpdate({ slug: req.params.slug }, { $set: req.body }, { new: true }).select(
+      '-reviews',
+    );
     if (!product) {
       throw createError(404, 'Không tìm thấy sản phẩm!');
     }
@@ -26,7 +28,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
 
 export const deleteProduct = asyncHandler(async (req, res) => {
   try {
-    const product = await Product.findOneAndDelete({ slug: req.params.slug });
+    const product = await Product.findOneAndDelete({ slug: req.params.slug }).select('-reviews');
     if (!product) {
       throw createError(404, 'Không tìm thấy sản phẩm!');
     }
@@ -38,7 +40,7 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 
 export const getProduct = asyncHandler(async (req, res) => {
   try {
-    const product = await Product.findOne({ slug: req.params.slug }).select('-reviews').populate('category');
+    const product = await Product.findOne({ slug: req.params.slug }).populate('category');
     if (!product) {
       throw createError(404, 'Không tìm thấy sản phẩm!');
     }
