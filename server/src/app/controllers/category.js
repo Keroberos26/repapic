@@ -1,6 +1,7 @@
 import Category from '../models/Category.js';
 import asyncHandler from 'express-async-handler';
 import { createError } from '../../utils/error.js';
+import Product from '../models/Product.js';
 
 export const createCategory = asyncHandler(async (req, res) => {
   const newCategory = new Category(req.body);
@@ -30,6 +31,7 @@ export const deleteCategory = asyncHandler(async (req, res) => {
     if (!category) {
       throw createError(404, 'Không tìm thấy thể loại sản phẩm!');
     }
+    await Product.updateMany({ category: category }, { $unset: { category: null } });
     res.status(200).json(category);
   } catch (error) {
     throw error;
