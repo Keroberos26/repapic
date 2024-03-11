@@ -19,7 +19,7 @@ const Sidebar = () => {
         <NavItem icon={DashboardIcon} text="Dashboard" to={config.routes.dashboard} />
         <NavItem icon={UserIcon} text="Người dùng" to="/user">
           <NavItem text="Danh sách" type="sub1" to={config.routes.userList} />
-          <NavItem text="Tạo" type="sub1" />
+          <NavItem text="Tạo" type="sub1" to={config.routes.userNew} />
         </NavItem>
         <NavItem icon={ProductIcon} text="Sản phẩm">
           <NavItem text="Danh sách" type="sub1" />
