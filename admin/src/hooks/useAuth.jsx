@@ -8,7 +8,7 @@ const useAuth = () => {
   const login = (credentials) => {
     dispatch({ type: 'LOGIN_START' });
     return api
-      .post('/auth/login', { ...credentials })
+      .post('/auth/login', credentials)
       .then((res) => {
         dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
         return true;

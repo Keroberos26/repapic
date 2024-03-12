@@ -41,7 +41,7 @@ const Header = () => {
           <GearIcon className="animate-spin-slow" />
         </IconButton>
         <IconButton sx={{ height: 40, width: 40 }} onClick={handleClick}>
-          <Avatar sx={{ height: 32, width: 32 }} />
+          <Avatar sx={{ height: 32, width: 32 }} src={user.avatar} />
         </IconButton>
       </div>
       <Menu
@@ -75,7 +75,7 @@ const Header = () => {
         }}
       >
         <div className="px-4 my-3">
-          <h6 className="font-semibold truncate">{user.firstName + user.lastName}</h6>
+          <h6 className="font-semibold truncate">{user.firstName + ' ' + user.lastName}</h6>
           <p className="truncate text-fade">{user.email}</p>
         </div>
         <Divider />
