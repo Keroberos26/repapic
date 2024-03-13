@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDx71po1avTYFGWyt0uBku_zFHWBe21IhY',
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: 'repapic-d7b56.firebaseapp.com',
   projectId: 'repapic-d7b56',
   storageBucket: 'repapic-d7b56.appspot.com',
