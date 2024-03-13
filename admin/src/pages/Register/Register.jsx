@@ -14,8 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 const Register = () => {
   useDocumentTitle('Đăng ký');
   const schema = object().shape({
-    firstName: string().required('Vui lòng nhập họ').min(2, 'Vui lòng nhập ít nhất 2 kí tự'),
-    lastName: string().required('Vui lòng nhập họ').min(2, 'Vui lòng nhập ít nhất 2 kí tự'),
+    name: string().required('Vui lòng nhập họ tên').min(2, 'Vui lòng nhập ít nhất 2 kí tự'),
     email: string().email('Email không hợp lệ').required('Vui lòng nhập email'),
     password: string()
       .required('Vui lòng nhập mật khẩu')
@@ -52,18 +51,11 @@ const Register = () => {
         </p>
       </div>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-5 sm:gap-4 sm:flex-row">
-          <FormControl variant="outlined" color="default" error={!!errors.firstName?.message}>
-            <InputLabel htmlFor="firstName">Họ</InputLabel>
-            <OutlinedInput id="firstName" label="Họ" {...register('firstName')} />
-            {errors.firstName?.message && <FormHelperText>{errors.firstName?.message}</FormHelperText>}
-          </FormControl>
-          <FormControl variant="outlined" color="default" error={!!errors.lastName?.message}>
-            <InputLabel htmlFor="lastName">Tên</InputLabel>
-            <OutlinedInput id="lastName" label="Tên" {...register('lastName')} />
-            {errors.lastName?.message && <FormHelperText>{errors.lastName?.message}</FormHelperText>}
-          </FormControl>
-        </div>
+        <FormControl variant="outlined" color="default" error={!!errors.firstName?.message}>
+          <InputLabel htmlFor="name">Họ tên</InputLabel>
+          <OutlinedInput id="name" label="Họ tên" {...register('name')} />
+          {errors.name?.message && <FormHelperText>{errors.name?.message}</FormHelperText>}
+        </FormControl>
         <FormControl variant="outlined" color="default" error={!!errors.email?.message}>
           <InputLabel htmlFor="email">Email</InputLabel>
           <OutlinedInput id="email" label="Email" {...register('email')} />

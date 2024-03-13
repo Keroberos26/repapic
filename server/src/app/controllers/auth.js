@@ -14,6 +14,29 @@ export const register = asyncHandler(async (req, res) => {
   res.status(201).json(newUser);
 });
 
+export const googleAuth = asyncHandler(async (req, res) => {
+  try {
+    let user = await User.findOne({ email: req.body.email });
+    if (user && user.providerId !== req.body.providerId) {
+      throw createError(400, 'Email đã được đăng ký bằng một phương thức khác');
+    }
+    if (!user) {
+      user = await User.create(req.body);
+    }
+
+    const accessToken = generateAccessToken({ id: user._id, isAdmin: user.isAdmin });
+    const newRefreshToken = generateRefreshToken({ id: user._id, isAdmin: user.isAdmin });
+    await User.findByIdAndUpdate(user._id, { ...req.body, refreshToken: newRefreshToken }, { new: true });
+    const { password, isAdmin, refreshToken, cart, wishlist, deliveryAddress, ...others } = user._doc;
+    res
+      .status(200)
+      .cookie('refreshToken', newRefreshToken, { httpOnly: true, signed: true })
+      .json({ ...others, token: accessToken });
+  } catch (error) {
+    throw error;
+  }
+});
+
 export const login = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) {

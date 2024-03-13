@@ -3,11 +3,7 @@ import bcrypt from 'bcrypt';
 
 const User = new Schema(
   {
-    firstName: {
-      type: String,
-      required: true,
-    },
-    lastName: {
+    name: {
       type: String,
       required: true,
     },
@@ -29,6 +25,7 @@ const User = new Schema(
       type: Boolean,
       default: false,
     },
+    providerId: String,
     address: String,
     street: String,
     status: {

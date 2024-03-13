@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { GoogleIcon } from '../../components/Icons';
 
 const Login = () => {
   useDocumentTitle('Đăng nhập');
@@ -23,12 +24,17 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const [showPassword, setShowPassword] = useState(false);
-  const { loading, error, login } = useAuth();
+  const { user, loading, error, login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = async (credentials) => {
-    const success = await login(credentials);
-    if (success) navigate(config.routes.dashboard);
+    await login(credentials);
+    if (user) navigate(config.routes.dashboard);
+  };
+
+  const handleGoogleLogin = async () => {
+    await loginWithGoogle();
+    if (user) navigate(config.routes.dashboard);
   };
 
   return (
@@ -86,6 +92,19 @@ const Login = () => {
           Đăng nhập
         </Button>
       </form>
+      <div className="flex items-center gap-2 my-4 text-sm text-fade before:bg-fade before:h-px before:w-full after:bg-fade after:h-px after:w-full">
+        hoặc
+      </div>
+      <Button
+        startIcon={<GoogleIcon />}
+        variant="text"
+        color="default"
+        size="large"
+        fullWidth
+        onClick={handleGoogleLogin}
+      >
+        Đăng nhập với Google
+      </Button>
     </div>
   );
 };
