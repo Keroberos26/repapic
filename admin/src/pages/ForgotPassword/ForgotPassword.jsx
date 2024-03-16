@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FormControl, FormHelperText } from '@mui/material';
 import { Button, InputLabel, OutlinedInput, Link } from '../../components';
 import config from '../../config';
-import { validateEmail } from '../../utils/validation';
 import { useDocumentTitle } from '../../hooks';
 
 const ForgotPassword = () => {
@@ -13,7 +12,7 @@ const ForgotPassword = () => {
   const handleChange = (event) => {
     setEmail(event.target.value);
 
-    if (!!error && !validateEmail(email)) {
+    if (!!error) {
       setError('Email không hợp lệ');
     } else {
       setError('');
@@ -23,7 +22,6 @@ const ForgotPassword = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!email) setError('Vui lòng nhập email');
-    if (!validateEmail(email)) setError('Email không hợp lệ');
   };
 
   return (

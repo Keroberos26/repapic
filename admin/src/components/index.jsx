@@ -1,4 +1,5 @@
 export { default as Alert } from './Alert';
+export { default as AvatarUpload } from './AvatarUpload';
 export { default as Breadcrumbs } from './Breadcrumbs';
 export { default as Button } from './Button';
 export { default as Container } from './Container';

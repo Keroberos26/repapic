@@ -24,17 +24,18 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const [showPassword, setShowPassword] = useState(false);
-  const { user, loading, error, login, loginWithGoogle } = useAuth();
+  const { loading, error, login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = async (credentials) => {
-    await login(credentials);
-    if (user) navigate(config.routes.dashboard);
+    const success = await login(credentials);
+    if (success) navigate(config.routes.dashboard);
   };
 
   const handleGoogleLogin = async () => {
-    await loginWithGoogle();
-    if (user) navigate(config.routes.dashboard);
+    const success = await loginWithGoogle();
+    if (success) navigate(config.routes.dashboard);
+    console.clear();
   };
 
   return (

@@ -7,6 +7,8 @@
   --primary-color: #00A76F;
   --secondary-color: #8e33ff;
   --fade-color: #637381;
+  --fader-color: #919eab;
+  --error-color: #FF5630;
 }
 
 html {
