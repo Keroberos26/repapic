@@ -7,44 +7,36 @@ import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
 import api from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { object, string } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const Register = () => {
   useDocumentTitle('Đăng ký');
-  const [credentials, setCredentials] = useState({ firstName: '', lastName: '', email: '', password: '' });
-  const [errorCredentials, setErrorCredentials] = useState({ firstName: '', lastName: '', email: '', password: '' });
+  const schema = object().shape({
+    name: string().required('Vui lòng nhập họ tên').min(2, 'Vui lòng nhập ít nhất 2 kí tự'),
+    email: string().email('Email không hợp lệ').required('Vui lòng nhập email'),
+    password: string()
+      .required('Vui lòng nhập mật khẩu')
+      .matches(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,32}$/,
+        'Mật khẩu từ 8 - 32 kí tự gồm ít nhất 1 chữ thường, 1 chữ hoa, 1 số, 1 kí tự đặc biệt',
+      ),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleChange = (event) => {
-    setCredentials((prev) => ({ ...prev, [event.target.id]: event.target.value }));
-
-    if (errorCredentials[event.target.id]) {
-      setErrorCredentials((prev) => ({ ...prev, [event.target.id]: '' }));
-    }
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (credentials.firstName && credentials.lastName && credentials.email && credentials.password) {
-      api
-        .post('/auth/register', { ...credentials })
-        .then(() => navigate(config.routes.login))
-        .catch((err) => setError(err.response?.data?.message));
-    } else {
-      if (!credentials.firstName) {
-        setErrorCredentials((prev) => ({ ...prev, firstName: 'Vui lòng nhập họ' }));
-      }
-      if (!credentials.lastName) {
-        setErrorCredentials((prev) => ({ ...prev, lastName: 'Vui lòng nhập tên' }));
-      }
-      if (!credentials.email) {
-        setErrorCredentials((prev) => ({ ...prev, email: 'Vui lòng nhập email' }));
-      }
-      if (!credentials.password) {
-        setErrorCredentials((prev) => ({ ...prev, password: 'Vui lòng nhập mật khẩu' }));
-      }
-    }
+  const onSubmit = (data) => {
+    api
+      .post('/auth/register', data)
+      .then(() => navigate(config.routes.login))
+      .catch((err) => setError(err.response?.data?.message));
   };
 
   return (
@@ -58,32 +50,24 @@ const Register = () => {
           </Link>
         </p>
       </div>
-      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-5 sm:gap-4 sm:flex-row">
-          <FormControl variant="outlined" color="default" error={!!errorCredentials.firstName}>
-            <InputLabel htmlFor="firstName">Họ</InputLabel>
-            <OutlinedInput id="firstName" label="Họ" value={credentials.firstName} onChange={handleChange} />
-            {errorCredentials.firstName && <FormHelperText>{errorCredentials.firstName}</FormHelperText>}
-          </FormControl>
-          <FormControl variant="outlined" color="default" error={!!errorCredentials.lastName}>
-            <InputLabel htmlFor="lastName">Tên</InputLabel>
-            <OutlinedInput id="lastName" label="Tên" value={credentials.lastName} onChange={handleChange} />
-            {errorCredentials.lastName && <FormHelperText>{errorCredentials.lastName}</FormHelperText>}
-          </FormControl>
-        </div>
-        <FormControl variant="outlined" color="default" error={!!errorCredentials.email}>
-          <InputLabel htmlFor="email">Email</InputLabel>
-          <OutlinedInput id="email" label="Email" value={credentials.email} onChange={handleChange} />
-          {errorCredentials.email && <FormHelperText>{errorCredentials.email}</FormHelperText>}
+      <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+        <FormControl variant="outlined" color="default" error={!!errors.firstName?.message}>
+          <InputLabel htmlFor="name">Họ tên</InputLabel>
+          <OutlinedInput id="name" label="Họ tên" {...register('name')} />
+          {errors.name?.message && <FormHelperText>{errors.name?.message}</FormHelperText>}
         </FormControl>
-        <FormControl variant="outlined" color="default" error={!!errorCredentials.password}>
+        <FormControl variant="outlined" color="default" error={!!errors.email?.message}>
+          <InputLabel htmlFor="email">Email</InputLabel>
+          <OutlinedInput id="email" label="Email" {...register('email')} />
+          {errors.email?.message && <FormHelperText>{errors.email?.message}</FormHelperText>}
+        </FormControl>
+        <FormControl variant="outlined" color="default" error={!!errors.password?.message}>
           <InputLabel htmlFor="password">Mật khẩu</InputLabel>
           <OutlinedInput
             id="password"
             type={showPassword ? 'text' : 'password'}
             label="Mật khẩu"
-            value={credentials.password}
-            onChange={handleChange}
+            {...register('password')}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -98,7 +82,7 @@ const Register = () => {
               </InputAdornment>
             }
           />
-          {errorCredentials.password && <FormHelperText>{errorCredentials.password}</FormHelperText>}
+          {errors.password?.message && <FormHelperText>{errors.password?.message}</FormHelperText>}
         </FormControl>
         {error && <Alert severity="error">{error}</Alert>}
         <Button

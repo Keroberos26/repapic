@@ -7,39 +7,34 @@ import { RiEyeCloseLine, RiEyeFill } from 'react-icons/ri';
 import { FaAngleRight } from 'react-icons/fa6';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { object, string } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { GoogleIcon } from '../../components/Icons';
 
 const Login = () => {
   useDocumentTitle('Đăng nhập');
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
-  const [errorCredentials, setErrorCredentials] = useState({ email: '', password: '' });
+  const schema = object().shape({
+    email: string().email('Email không hợp lệ').required('Vui lòng nhập email'),
+    password: string().required('Vui lòng nhập mật khẩu'),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
   const [showPassword, setShowPassword] = useState(false);
-  const { loading, error, login } = useAuth();
+  const { user, loading, error, login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
-  const handleChange = (event) => {
-    setCredentials((prev) => ({ ...prev, [event.target.id]: event.target.value }));
-
-    if (errorCredentials[event.target.id]) {
-      setErrorCredentials((prev) => ({ ...prev, [event.target.id]: '' }));
-    }
+  const onSubmit = async (credentials) => {
+    await login(credentials);
+    if (user) navigate(config.routes.dashboard);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (credentials.email && credentials.password) {
-      login(credentials).then((res) => {
-        if (res) {
-          navigate(config.routes.dashboard);
-        }
-      });
-    } else {
-      if (!credentials.email) {
-        setErrorCredentials((prev) => ({ ...prev, email: 'Vui lòng nhập email' }));
-      }
-      if (!credentials.password) {
-        setErrorCredentials((prev) => ({ ...prev, password: 'Vui lòng nhập mật khẩu' }));
-      }
-    }
+  const handleGoogleLogin = async () => {
+    await loginWithGoogle();
+    if (user) navigate(config.routes.dashboard);
   };
 
   return (
@@ -53,20 +48,19 @@ const Login = () => {
           </Link>
         </p>
       </div>
-      <form className="flex flex-col gap-5 none" onSubmit={handleSubmit}>
-        <FormControl variant="outlined" color="default" error={!!errorCredentials.email}>
+      <form className="flex flex-col gap-5 none" onSubmit={handleSubmit(onSubmit)}>
+        <FormControl variant="outlined" color="default" error={!!errors.email?.message}>
           <InputLabel htmlFor="email">Email</InputLabel>
-          <OutlinedInput id="email" label="Email" value={credentials.email} onChange={handleChange} />
-          {errorCredentials.email && <FormHelperText>{errorCredentials.email}</FormHelperText>}
+          <OutlinedInput id="email" label="Email" {...register('email')} />
+          {errors.email?.message && <FormHelperText>{errors.email?.message}</FormHelperText>}
         </FormControl>
-        <FormControl variant="outlined" color="default" error={!!errorCredentials.password}>
+        <FormControl variant="outlined" color="default" error={!!errors.password?.message}>
           <InputLabel htmlFor="password">Mật khẩu</InputLabel>
           <OutlinedInput
             id="password"
             type={showPassword ? 'text' : 'password'}
             label="Mật khẩu"
-            value={credentials.password}
-            onChange={handleChange}
+            {...register('password')}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -81,7 +75,7 @@ const Login = () => {
               </InputAdornment>
             }
           />
-          {/* {errorCredentials.password && <FormHelperText>{errorCredentials.password}</FormHelperText>} */}
+          {errors.password?.message && <FormHelperText>{errors.password?.message}</FormHelperText>}
         </FormControl>
         {error?.data?.message && <Alert severity="error">{error.data.message}</Alert>}
         <Link to={config.routes.forgotPassword} className="text-right" color="inherit" sx={{ fontSize: 14 }}>
@@ -98,6 +92,19 @@ const Login = () => {
           Đăng nhập
         </Button>
       </form>
+      <div className="flex items-center gap-2 my-4 text-sm text-fade before:bg-fade before:h-px before:w-full after:bg-fade after:h-px after:w-full">
+        hoặc
+      </div>
+      <Button
+        startIcon={<GoogleIcon />}
+        variant="text"
+        color="default"
+        size="large"
+        fullWidth
+        onClick={handleGoogleLogin}
+      >
+        Đăng nhập với Google
+      </Button>
     </div>
   );
 };

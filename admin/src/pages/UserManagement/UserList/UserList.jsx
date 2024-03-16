@@ -1,6 +1,6 @@
 import { Container, FormControl, IconButton, InputAdornment, MenuItem, Tab } from '@mui/material';
 import React, { useState } from 'react';
-import { Breadcrumbs, Button, Link, Menu, OutlinedInput, Tabs } from '../../../components';
+import { Breadcrumbs, Button, Link, Menu, OutlinedInput, Paper, Tabs } from '../../../components';
 import config from '../../../config';
 import { useDocumentTitle } from '../../../hooks';
 import { FaFileExport, FaFileImport, FaPlus } from 'react-icons/fa6';
@@ -50,10 +50,10 @@ const UserList = () => {
           </Breadcrumbs>
         </div>
         <Button color="default" to={config.routes.userNew} startIcon={<FaPlus />}>
-          Thêm sản phẩm
+          Thêm người dùng
         </Button>
       </div>
-      <div className="shadow-md rounded-2xl">
+      <Paper>
         <div className="px-5">
           <Tabs value={tab} onChange={handleChangeTab} aria-label="basic tabs example">
             <Tab label="Tất cả" {...a11yProps(0)} />
@@ -111,7 +111,7 @@ const UserList = () => {
           </Menu>
         </div>
         <UserTable />
-      </div>
+      </Paper>
     </Container>
   );
 };

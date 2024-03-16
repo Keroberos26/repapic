@@ -11,6 +11,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import Verify from './pages/Verify';
 import Dashboard from './pages/Dashboard';
 import UserList from './pages/UserManagement/UserList';
+import UserNew from './pages/UserManagement/UserNew';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path={config.layouts.admin} element={<AdminLayout />}>
             <Route path={config.routes.dashboard} element={<Dashboard />} />
             <Route path={config.routes.userList} element={<UserList />} />
+            <Route path={config.routes.userNew} element={<UserNew />} />
           </Route>
         </Routes>
       </Router>

@@ -1,6 +1,7 @@
 import User from '../models/User.js';
 import asyncHandler from 'express-async-handler';
 import { createError } from '../../utils/error.js';
+import { getAddress } from '../../utils/address.js';
 
 export const createUser = asyncHandler(async (req, res) => {
   const newUser = new User(req.body);
@@ -43,6 +44,7 @@ export const getUser = asyncHandler(async (req, res) => {
       throw createError(404, 'Không tìm thấy User!');
     }
     const { password, isAdmin, refreshToken, cart, wishlist, deliveryAddress, ...others } = user._doc;
+    others.address = getAddress(others.address);
     res.status(200).json(others);
   } catch (error) {
     throw error;
@@ -55,6 +57,7 @@ export const getUsers = asyncHandler(async (req, res) => {
     const sanitizedUsers = users.map((user) => {
       // Tạo một bản sao của đối tượng người dùng và loại bỏ thông tin nhạy cảm
       const { password, isAdmin, refreshToken, cart, wishlist, deliveryAddress, ...others } = user._doc;
+      others.address = getAddress(others.address);
       return others;
     });
 

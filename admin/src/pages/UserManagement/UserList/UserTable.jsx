@@ -18,9 +18,7 @@ const STATUS = {
   },
 };
 
-const UserName = ({ avatar, firstName, lastName, email }) => {
-  const name = firstName + ' ' + lastName;
-
+const UserName = ({ avatar, name, email }) => {
   return (
     <div className="flex items-center gap-4">
       <Avatar src={avatar} alt={name} />
@@ -38,14 +36,13 @@ const columns = [
     headerName: 'Tên',
     width: 300,
     renderCell: ({ row }) => <UserName {...row} />,
-    valueGetter: ({ row }) => `${row.firstName} ${row.lastName}`,
   },
-  { field: 'address', headerName: 'Địa chỉ', width: 300 },
+  { field: 'address', headerName: 'Địa chỉ', width: 300, valueGetter: ({ row }) => row.address?.path },
   { field: 'phone', headerName: 'Số điện thoại', width: 160 },
   {
     field: 'status',
     headerName: 'Trạng thái',
-    width: 200,
+    width: 150,
     align: 'center',
     valueGetter: ({ row }) => STATUS[row.status].label,
     renderCell: ({ row }) => <Chip color={STATUS[row.status].color} label={STATUS[row.status].label} />,

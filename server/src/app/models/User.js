@@ -3,17 +3,12 @@ import bcrypt from 'bcrypt';
 
 const User = new Schema(
   {
-    firstName: {
-      type: String,
-      required: true,
-    },
-    lastName: {
+    name: {
       type: String,
       required: true,
     },
     password: {
       type: String,
-      required: true,
     },
     email: {
       type: String,
@@ -21,11 +16,18 @@ const User = new Schema(
       required: true,
       unique: true,
     },
+    dOB: Date,
+    gender: {
+      type: String,
+      enum: ['male', 'female', 'others'],
+    },
     isAdmin: {
       type: Boolean,
       default: false,
     },
+    providerId: String,
     address: String,
+    street: String,
     status: {
       type: String,
       enum: ['pending', 'verified', 'banned'],
@@ -43,7 +45,11 @@ const User = new Schema(
           type: String,
           required: true,
         },
-        code: {
+        street: {
+          type: String,
+          require: true,
+        },
+        detail: {
           type: String,
           required: true,
         },
