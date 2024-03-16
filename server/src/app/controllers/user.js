@@ -3,8 +3,10 @@ import asyncHandler from 'express-async-handler';
 import { createError } from '../../utils/error.js';
 
 export const createUser = asyncHandler(async (req, res) => {
-  const newUser = new User(req.body);
+  const avatarFile = req.file;
   try {
+    const avatar = 'data:' + avatarFile.mimetype + ';base64,' + avatarFile.buffer.toString('base64');
+    const newUser = new User({ ...req.body, avatar: avatar });
     const user = await newUser.save();
     res.status(201).json(user);
   } catch (error) {

@@ -3,8 +3,17 @@ import asyncHandler from 'express-async-handler';
 import { createError } from '../../utils/error.js';
 
 export const createProduct = asyncHandler(async (req, res) => {
-  const newProduct = new Product(req.body);
+  const thumbnailFile = req.files[0];
+  const imageFiles = req.files.slice(1, 6);
+
   try {
+    const thumbnail = 'data:' + thumbnailFile.mimetype + ';base64,' + thumbnailFile.buffer.toString('base64');
+    const images = [];
+    for (const file of imageFiles) {
+      const image = 'data:' + file.mimetype + ';base64,' + file.buffer.toString('base64');
+      images.push(image);
+    }
+    const newProduct = new Product({ ...req.body, thumbnail: thumbnail, images: images });
     const product = await newProduct.save();
     res.status(201).json(product);
   } catch (error) {
