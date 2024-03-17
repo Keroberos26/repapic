@@ -4,7 +4,7 @@ import { createError } from '../../utils/error.js';
 
 export const createProduct = asyncHandler(async (req, res) => {
   const thumbnailFile = req.files[0];
-  const imageFiles = req.files.slice(1, 6);
+  const imageFiles = req.files.slice(1, 5);
 
   try {
     const thumbnail = `data:${thumbnailFile.mimetype};base64${thumbnailFile.buffer.toString('base64')}`;
