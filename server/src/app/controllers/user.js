@@ -4,8 +4,10 @@ import { createError } from '../../utils/error.js';
 import { getAddress } from '../../utils/address.js';
 
 export const createUser = asyncHandler(async (req, res) => {
-  const newUser = new User(req.body);
+  const { mimetype, buffer } = req.file;
   try {
+    const avatar = `data:${mimetype};base64${buffer.toString('base64')}`;
+    const newUser = new User({ ...req.body, avatar: avatar });
     const user = await newUser.save();
     res.status(201).json(user);
   } catch (error) {
