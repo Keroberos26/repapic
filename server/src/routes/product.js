@@ -6,7 +6,7 @@ import { upload } from '../app/middlewares/upload.js';
 
 const router = Router();
 
-router.post('/', verifyAdmin, upload.array('file', 5), createProduct);
+router.post('/', verifyAdmin, upload.array('images', 5), createProduct);
 router.post('/:slug/review', verifyToken, writeReview);
 router.put('/:slug', verifyAdmin, updateProduct);
 router.put('/:slug/review', verifyToken, editReview);
