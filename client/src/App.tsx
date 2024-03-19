@@ -1,31 +1,34 @@
-import { FC } from 'react';
-import { publicRoutes } from './routes';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import ScrollToTop from './components/ScrollToTop';
+import React from 'react';
+import './App.css';
+import { Button } from '@mui/material';
 
-const App: FC = () => {
+function App() {
   return (
-    <Router>
-      <div className="App">
-        <ScrollToTop />
-        <Routes>
-          {publicRoutes.map((layout, indexLayout) => {
-            const Layout = layout.element;
-
-            return (
-              <Route key={indexLayout} path={layout.path} element={<Layout />}>
-                {layout.components.map((page, indexPage) => {
-                  const Page = page.element;
-
-                  return <Route key={indexPage} path={page.path} element={<Page />} />;
-                })}
-              </Route>
-            );
-          })}
-        </Routes>
-      </div>
-    </Router>
+    <div className="flex items-center justify-center h-screen gap-5 App">
+      <Button variant="contained">Test</Button>
+      <Button variant="contained" color="primary">
+        Test
+      </Button>
+      <Button variant="contained" color="secondary" size="small">
+        Test
+      </Button>
+      <Button variant="contained" color="info">
+        Test
+      </Button>
+      <Button variant="contained" color="error" size="large">
+        Test
+      </Button>
+      <Button variant="contained" color="warning">
+        Test
+      </Button>
+      <Button variant="contained" color="success">
+        Test
+      </Button>
+      <Button variant="contained" color="success" disabled>
+        Test
+      </Button>
+    </div>
   );
-};
+}
 
 export default App;
