@@ -7,7 +7,7 @@ interface MuiProviderProps {
 }
 
 const MuiProvider: FC<MuiProviderProps> = ({ children }) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={theme()}>{children}</ThemeProvider>;
 };
 
 export default MuiProvider;
