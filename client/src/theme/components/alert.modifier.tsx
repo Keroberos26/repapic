@@ -1,9 +1,16 @@
 import { Components, Theme } from '@mui/material/styles';
+import { ErrorIcon, InfoIcon, SuccessIcon, WarningIcon } from '../../components/Icons';
 
 export const MuiAlert: Components<Theme>['MuiAlert'] = {
   defaultProps: {
     severity: 'info',
     variant: 'standard',
+    iconMapping: {
+      info: <InfoIcon />,
+      success: <SuccessIcon />,
+      warning: <WarningIcon />,
+      error: <ErrorIcon />,
+    },
     onClose: () => {},
   },
   styleOverrides: {
@@ -30,6 +37,9 @@ export const MuiAlert: Components<Theme>['MuiAlert'] = {
         return {
           backgroundColor: lighter,
           color: darker,
+          '& .MuiAlertTitle-root': {
+            color: darker,
+          },
         };
       },
     },
@@ -44,6 +54,9 @@ export const MuiAlert: Components<Theme>['MuiAlert'] = {
         return {
           backgroundColor: lighter,
           color: darker,
+          '& .MuiAlertTitle-root': {
+            color: darker,
+          },
         };
       },
     },
@@ -58,6 +71,9 @@ export const MuiAlert: Components<Theme>['MuiAlert'] = {
         return {
           backgroundColor: lighter,
           color: darker,
+          '& .MuiAlertTitle-root': {
+            color: darker,
+          },
         };
       },
     },
@@ -72,6 +88,9 @@ export const MuiAlert: Components<Theme>['MuiAlert'] = {
         return {
           backgroundColor: lighter,
           color: darker,
+          '& .MuiAlertTitle-root': {
+            color: darker,
+          },
         };
       },
     },
@@ -144,6 +163,9 @@ export const MuiAlert: Components<Theme>['MuiAlert'] = {
           border: `1px solid ${main}29`,
           backgroundColor: `${main}14`,
           color: dark,
+          '& .MuiAlertTitle-root': {
+            color: dark,
+          },
         };
       },
     },
@@ -159,6 +181,9 @@ export const MuiAlert: Components<Theme>['MuiAlert'] = {
           border: `1px solid ${main}29`,
           backgroundColor: `${main}14`,
           color: dark,
+          '& .MuiAlertTitle-root': {
+            color: dark,
+          },
         };
       },
     },
@@ -174,6 +199,9 @@ export const MuiAlert: Components<Theme>['MuiAlert'] = {
           border: `1px solid ${main}29`,
           backgroundColor: `${main}14`,
           color: dark,
+          '& .MuiAlertTitle-root': {
+            color: dark,
+          },
         };
       },
     },
@@ -189,6 +217,9 @@ export const MuiAlert: Components<Theme>['MuiAlert'] = {
           border: `1px solid ${main}29`,
           backgroundColor: `${main}14`,
           color: dark,
+          '& .MuiAlertTitle-root': {
+            color: dark,
+          },
         };
       },
     },
