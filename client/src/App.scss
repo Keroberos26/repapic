@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #00a76f;
+}
+
+html {
+  font-family: 'Public Sans', sans-serif;
+}
+
+.nav-link {
+  position: relative;
+  padding-block: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  &:hover,
+  &.active {
+    color: var(--primary-color);
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      top: 50%;
+      left: -12px;
+      transform: translateY(-50%);
+      opacity: 0.64;
+      border-radius: 50%;
+      background-color: currentcolor;
+    }
+  }
+}

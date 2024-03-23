@@ -15,6 +15,10 @@ export const MuiFilledInput: Components<Theme>['MuiFilledInput'] = {
         },
       },
 
+      '&.Mui-focused': {
+        backgroundColor: `${palette.grey?.[500]}29`,
+      },
+
       '&:not(.Mui-error):not(.Mui-disabled):hover': {
         backgroundColor: `${palette.grey?.[500]}29`,
       },
@@ -22,12 +26,6 @@ export const MuiFilledInput: Components<Theme>['MuiFilledInput'] = {
       '&:before, &:after': {
         content: 'none',
       },
-    },
-    focused: {
-      backgroundColor: `${palette.grey?.[500]}29`,
-    },
-    error: {
-      backgroundColor: `red`,
     },
   },
 };

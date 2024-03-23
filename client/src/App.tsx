@@ -1,32 +1,15 @@
-import React from 'react';
-import './App.css';
-import { Button } from '@mui/material';
+import './App.scss';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
 
 function App() {
   return (
-    <div className="flex items-center justify-center h-screen gap-5 App">
-      <Button variant="contained">Test</Button>
-      <Button variant="contained" color="primary">
-        Test
-      </Button>
-      <Button variant="contained" color="secondary" size="small">
-        Test
-      </Button>
-      <Button variant="contained" color="info">
-        Test
-      </Button>
-      <Button variant="contained" color="error" size="large">
-        Test
-      </Button>
-      <Button variant="contained" color="warning">
-        Test
-      </Button>
-      <Button variant="contained" color="success">
-        Test
-      </Button>
-      <Button variant="contained" color="success" disabled>
-        Test
-      </Button>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainLayout />}></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }

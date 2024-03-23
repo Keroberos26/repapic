@@ -9,6 +9,7 @@ import { MuiFormControl } from './formControl.modifier';
 import { MuiFormHelperText } from './formHelperText.modifier';
 import { MuiInputLabel } from './inputLabel.modifier';
 import { MuiLink } from './link.modifier';
+import { MuiMenuItem } from './menuItem.modifier';
 import { MuiOutlinedInput } from './outlinedInput.modifier';
 import { MuiPopover } from './popover.modifier';
 
@@ -22,6 +23,7 @@ export const components: Components<Theme> = {
   MuiFormHelperText,
   MuiInputLabel,
   MuiLink,
+  MuiMenuItem,
   MuiOutlinedInput,
   MuiPopover,
 };
