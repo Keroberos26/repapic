@@ -4,7 +4,12 @@ import { MuiAlert } from './alert.modifier';
 import { MuiButton } from './button.modifier';
 import { MuiCheckbox } from './checkbox.modifier';
 import { MuiDialog } from './dialog.modifier';
+import { MuiFilledInput } from './filledInput.modifier';
+import { MuiFormControl } from './formControl.modifier';
+import { MuiFormHelperText } from './formHelperText.modifier';
+import { MuiInputLabel } from './inputLabel.modifier';
 import { MuiLink } from './link.modifier';
+import { MuiOutlinedInput } from './outlinedInput.modifier';
 import { MuiPopover } from './popover.modifier';
 
 export const components: Components<Theme> = {
@@ -12,6 +17,11 @@ export const components: Components<Theme> = {
   MuiButton,
   MuiCheckbox,
   MuiDialog,
+  MuiFilledInput,
+  MuiFormControl,
+  MuiFormHelperText,
+  MuiInputLabel,
   MuiLink,
+  MuiOutlinedInput,
   MuiPopover,
 };
