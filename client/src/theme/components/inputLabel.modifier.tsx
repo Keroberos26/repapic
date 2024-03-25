@@ -5,9 +5,12 @@ export const MuiInputLabel: Components<Theme>['MuiInputLabel'] = {
   styleOverrides: {
     root: {
       color: palette.grey?.[500],
+
+      '&.MuiInputLabel-shrink': {
+        fontSize: '1rem',
+        fontWeight: 600,
+      },
     },
-    shrink: {
-      fontWeight: 600,
-    },
+    shrink: {},
   },
 };

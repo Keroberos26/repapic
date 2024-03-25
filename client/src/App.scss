@@ -4,11 +4,37 @@
 @tailwind utilities;
 
 :root {
+  --default-color: #212b36;
   --primary-color: #00a76f;
+  --secondary-color: #8e33ff;
+  --fade-color: #637381;
+  --fader-color: #919eab;
+  --error-color: #ff5630;
 }
 
 html {
+  scroll-behavior: smooth;
+}
+
+body {
   font-family: 'Public Sans', sans-serif;
+  font-optical-sizing: auto;
+  color: var(--default-color);
+}
+
+.background-3::before {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  content: '';
+  opacity: 0.24;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url('../public/assets/images/backgrounds/overlay_4.jpg');
 }
 
 .nav-link {
