@@ -8,7 +8,7 @@ const BaseLayout = () => {
       <header>
         <div className="flex items-center justify-between h-16 px-6 transition-all md:h-20 ">
           <Link href={config.routes.home}>
-            <img src="/assets/images/logo.png" alt="Repapic" className="h-16 transition-all md:h-20" />
+            <img src="/images/logo.png" alt="Repapic" className="h-16 transition-all md:h-20" />
           </Link>
           <div className="font-semibold">
             <Link color="inherit">Cần giúp đỡ?</Link>

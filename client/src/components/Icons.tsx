@@ -217,6 +217,26 @@ const MenuIcon: FC<IconProps> = ({ width = '1em', height = '1em', className }) =
   );
 };
 
+const ThunderIcon: FC<IconProps> = ({ width = '1em', height = '1em', className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      aria-hidden="true"
+      role="img"
+      width={width}
+      height={height}
+      className={className}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        d="M11.11 23a1 1 0 0 1-.34-.06a1 1 0 0 1-.65-1.05l.77-7.09H5a1 1 0 0 1-.83-1.56l7.89-11.8a1 1 0 0 1 1.17-.38a1 1 0 0 1 .65 1l-.77 7.14H19a1 1 0 0 1 .83 1.56l-7.89 11.8a1 1 0 0 1-.83.44"
+      ></path>
+    </svg>
+  );
+};
+
 export {
   InfoIcon,
   SuccessIcon,
@@ -229,4 +249,5 @@ export {
   CartIcon,
   SearchIcon,
   MenuIcon,
+  ThunderIcon,
 };

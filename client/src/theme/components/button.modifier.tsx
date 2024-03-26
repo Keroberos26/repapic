@@ -410,24 +410,24 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
       props: { size: 'small' },
       style: {
         height: 30,
-        paddingInline: 4,
-        paddingBlock: 8,
+        paddingInline: 8,
+        paddingBlock: 4,
       },
     },
     {
       props: { size: 'medium' },
       style: {
         height: 36,
-        paddingInline: 6,
-        paddingBlock: 12,
+        paddingInline: 12,
+        paddingBlock: 6,
       },
     },
     {
       props: { size: 'large' },
       style: {
         height: 48,
-        paddingInline: 8,
-        paddingBlock: 16,
+        paddingInline: 16,
+        paddingBlock: 8,
       },
     },
   ],

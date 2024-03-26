@@ -1,11 +1,13 @@
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useLayoutEffect, useState } from 'react';
 import { Avatar, IconButton, Menu, MenuItem, Stack, Tooltip } from '@mui/material';
 import config from '../../config';
 import { Link } from 'react-router-dom';
 import { CartIcon, HeartIcon, MenuIcon } from '../../components/Icons';
+import classNames from 'classnames';
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const open = Boolean(anchorEl);
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
@@ -15,17 +17,34 @@ const Header = () => {
     setAnchorEl(null);
   };
 
+  useLayoutEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY >= 40);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header>
-      <div className="flex items-center justify-between h-16 px-4 md:h-20 lg:px-10 md:px-5">
+    <header
+      className={classNames('fixed top-0 left-0 right-0 z-50 bg-opacity-80 backdrop-blur-[6px]', {
+        'bg-white': isScrolled,
+      })}
+    >
+      <div
+        className={classNames('flex items-center justify-between h-16 px-4 transition-all lg:px-10 md:px-5', {
+          'md:h-20': !isScrolled,
+        })}
+      >
         <div className="lg:hidden">
           <IconButton>
             <MenuIcon />
           </IconButton>
         </div>
         <div className="flex items-center">
-          <Link to={config.routes.home} className="w-32 md:w-40" title="Repapic">
-            <img src="/assets/images/logo.png" alt="Repapic" />
+          <Link to={config.routes.home} className="w-32" title="Repapic">
+            <img src="/images/logo.png" alt="Repapic" />
           </Link>
         </div>
         <div className="flex items-center h-full gap-8 max-lg:hidden">
