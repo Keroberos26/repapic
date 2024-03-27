@@ -37,6 +37,14 @@ body {
   background-image: url('../public/images/backgrounds/overlay_4.jpg');
 }
 
+.swiper-pagination-bullet {
+  transition: 0.35s;
+
+  &.swiper-pagination-bullet-active {
+    width: 20px;
+  }
+}
+
 .nav-link {
   position: relative;
   padding-block: 12px;

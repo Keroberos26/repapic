@@ -11,6 +11,7 @@ import { MuiInputLabel } from './inputLabel.modifier';
 import { MuiLink } from './link.modifier';
 import { MuiMenuItem } from './menuItem.modifier';
 import { MuiOutlinedInput } from './outlinedInput.modifier';
+import { MuiPaper } from './paper.modifier';
 import { MuiPopover } from './popover.modifier';
 
 export const components: Components<Theme> = {
@@ -25,5 +26,6 @@ export const components: Components<Theme> = {
   MuiLink,
   MuiMenuItem,
   MuiOutlinedInput,
+  MuiPaper,
   MuiPopover,
 };

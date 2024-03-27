@@ -1,10 +1,16 @@
-import React from 'react';
 import Carousel from './Carousel';
+import { ProductCarousel } from '../../components';
+import { Container } from '@mui/material';
+import Heading from './Heading';
 
 const Home = () => {
   return (
     <div>
       <Carousel />
+      <Container className="py-20">
+        <Heading title="Top trending" />
+        <ProductCarousel />
+      </Container>
     </div>
   );
 };

@@ -98,8 +98,12 @@ const Header = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
         <Stack padding={1}>
-          <MenuItem>Đăng nhập</MenuItem>
-          <MenuItem>Đăng ký</MenuItem>
+          <MenuItem component={Link} to={config.routes.login}>
+            Đăng nhập
+          </MenuItem>
+          <MenuItem component={Link} to={config.routes.register}>
+            Đăng ký
+          </MenuItem>
         </Stack>
       </Menu>
     </header>

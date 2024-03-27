@@ -3,6 +3,7 @@ import { ThunderIcon } from '../../components/Icons';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { CSSProperties } from 'react';
 
 const textVariants = {
   initial: {
@@ -42,6 +43,15 @@ const Carousel = () => {
         pagination={{
           clickable: true,
         }}
+        style={
+          {
+            '--swiper-pagination-color': 'var(--primary-color)',
+            '--swiper-pagination-bullet-inactive-color': 'white',
+            '--swiper-pagination-bullet-inactive-opacity': '1',
+            '--swiper-pagination-bullet-size': '10px',
+            '--swiper-pagination-bullet-border-radius': '10px',
+          } as CSSProperties
+        }
       >
         <SwiperSlide>
           <Container className="h-screen pt-20">
